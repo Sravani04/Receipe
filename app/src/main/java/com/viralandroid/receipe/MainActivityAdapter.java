@@ -48,7 +48,7 @@ public class MainActivityAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         View item_view = inflater.inflate(R.layout.categories_list,null);
         TextView category_count = (TextView) item_view.findViewById(R.id.category_count);
-        ImageView category_image = (ImageView) item_view.findViewById(R.id.categories);
+        ImageView category_image = (ImageView) item_view.findViewById(R.id.category_image);
         TextView category_title  = (TextView) item_view.findViewById(R.id.category_title);
         category_count.setText(mnumbers.get(position));
         category_image.setImageResource(mimages.get(position));
