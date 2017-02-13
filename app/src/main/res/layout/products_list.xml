@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                app:srcCompat="@drawable/back_arrow"
+                android:id="@+id/imageView3"
+                android:adjustViewBounds="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:text="RecipesPLus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView3"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:textSize="17sp"
+                android:textColor="#ffa500" />
+
+            <TextView
+                android:text="Fruit recipes"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/textView4"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:textSize="17sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#808080" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:id="@+id/products_list" />
+</LinearLayout>

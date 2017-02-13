@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:text="Step1:"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/textView21"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:textColor="#000"
+            android:textStyle="normal|bold"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:text="Deseed the squash and cut into 8 wedges, then place in a roasting tray and sprinklw over the chilli, drizzle with oil and season. Toss well, spread evenly and roast for 35 to 40 minutes. Remove and cool."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView22"
+            android:maxLines="6"
+            android:textColor="#000"
+            android:textSize="17sp" />
+    </LinearLayout>
+</LinearLayout>
