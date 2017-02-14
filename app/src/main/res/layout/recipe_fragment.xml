@@ -29,11 +29,11 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="match_parent"
-                        app:srcCompat="@drawable/back_arrow"
-                        android:id="@+id/imageView6"
+                        android:id="@+id/back_btn"
                         android:paddingTop="5dp"
                         android:layout_marginLeft="5dp"
-                        android:adjustViewBounds="true" />
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/back_arrow" />
 
                     <TextView
                         android:text="Fruit recipes"
@@ -45,14 +45,15 @@
                         android:textColor="#ffa500"
                         android:layout_marginLeft="6dp"
                         android:layout_weight="1"
-                        android:layout_marginTop="4dp" />
+                        android:layout_marginTop="4dp"
+                        android:textStyle="normal|bold" />
 
                     <ImageView
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/cart_icon"
-                        android:id="@+id/imageView7"
-                        android:layout_marginRight="5dp" />
+                        android:id="@+id/recipe_cart"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/cart_icon" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -60,9 +61,10 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="68dp"
+            android:layout_height="60dp"
             android:id="@+id/footer"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -79,20 +81,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:id="@+id/recipes">
 
                         <ImageView
                             android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            app:srcCompat="@drawable/tab_bar_summary2"
-                            android:id="@+id/imageView14" />
+                            android:layout_height="40dp"
+                            android:id="@+id/recipe_image"
+                            android:src="@drawable/tab_bar_summary2" />
 
                         <TextView
                             android:text="Recipes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView15"
-                            android:layout_marginLeft="5dp" />
+                            android:id="@+id/recipe_title"
+                            android:layout_marginLeft="5dp"
+                            android:paddingRight="5dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -100,19 +104,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:id="@+id/ingrediants">
 
                         <ImageView
                             android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            app:srcCompat="@drawable/tab_bar_ingredients_active"
-                            android:id="@+id/imageView15" />
+                            android:layout_height="40dp"
+                            android:id="@+id/ingrediants_image"
+                            android:src="@drawable/tab_bar_ingredients_active" />
 
                         <TextView
                             android:text="Ingredients"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView16"
+                            android:id="@+id/ingrediants_title"
                             android:textColor="#ffa500"
                             android:gravity="center_horizontal" />
                     </LinearLayout>
@@ -122,20 +127,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:id="@+id/methods">
 
                         <ImageView
                             android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            app:srcCompat="@drawable/tab_bar_recipe"
-                            android:id="@+id/imageView16" />
+                            android:layout_height="40dp"
+                            android:id="@+id/methods_image"
+                            android:src="@drawable/tab_bar_recipe" />
 
                         <TextView
                             android:text="Method"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView17"
-                            android:gravity="center_horizontal" />
+                            android:id="@+id/methods_title"
+                            android:gravity="center_horizontal"
+                            android:layout_marginBottom="5dp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -155,13 +162,12 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/line"
             android:layout_above="@+id/footer"
-            android:id="@+id/recipe_frame">
+            android:id="@+id/recipe_frame"
+            android:layout_marginBottom="3dp">
 
         </FrameLayout>
 
     </RelativeLayout>
-
-
 
 
 </LinearLayout>

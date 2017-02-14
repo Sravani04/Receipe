@@ -19,11 +19,11 @@
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                app:srcCompat="@drawable/back_arrow"
-                android:id="@+id/imageView3"
+                android:id="@+id/back_btn"
                 android:adjustViewBounds="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="14dp"
+                android:src="@drawable/back_arrow" />
 
             <TextView
                 android:text="RecipesPLus"
@@ -33,7 +33,9 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:textSize="17sp"
-                android:textColor="#ffa500" />
+                android:textColor="#ffa500"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="3dp" />
 
             <TextView
                 android:text="Fruit recipes"
@@ -44,7 +46,9 @@
                 android:gravity="center_vertical"
                 android:textSize="17sp"
                 android:layout_marginLeft="10dp"
-                android:textColor="#808080" />
+                android:textColor="#808080"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="3dp" />
         </LinearLayout>
     </LinearLayout>
 

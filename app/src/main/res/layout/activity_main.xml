@@ -26,7 +26,8 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_weight="1"
                 android:textSize="17sp"
-                android:textColor="#808080" />
+                android:textColor="#808080"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:layout_width="90dp"
@@ -39,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#000"
-        android:layout_marginBottom="5dp"></LinearLayout>
+        android:layout_marginBottom="3dp"></LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
