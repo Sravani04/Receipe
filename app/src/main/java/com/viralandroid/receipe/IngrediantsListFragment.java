@@ -6,13 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
 
 import java.util.ArrayList;
 
@@ -22,20 +16,17 @@ import java.util.ArrayList;
 
 public class IngrediantsListFragment extends Fragment {
     IngrediantsListAdapter ingrediantsListAdapter;
-    ImageView ingrediants_like,ingrediants_share;
     ListView listView;
     ArrayList<String> spoons;
     ArrayList<String> items;
-    ArrayList<Categories> categoriesfrom_api;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        final View view = inflater.inflate(R.layout.ingrediants_page,container,false);
-        listView = (ListView) view.findViewById(R.id.ingrediants_list);
+        final View view = inflater.inflate(R.layout.recipe_page,container,false);
+        listView = (ListView) view.findViewById(R.id.recipe_list);
 
         spoons = new ArrayList<>();
         items  = new ArrayList<>();
-        categoriesfrom_api = new ArrayList<>();
 
         spoons.add("1 cup");
         spoons.add("2 teaspoon");
@@ -57,7 +48,7 @@ public class IngrediantsListFragment extends Fragment {
         items.add("all-butter puff pastry");
         items.add("free-range egg");
 
-        ingrediantsListAdapter = new IngrediantsListAdapter(getActivity(),categoriesfrom_api);
+        ingrediantsListAdapter = new IngrediantsListAdapter(getActivity(),spoons,items);
 
 
         listView.setAdapter(ingrediantsListAdapter);
@@ -67,26 +58,9 @@ public class IngrediantsListFragment extends Fragment {
 
             }
         });
-        //get_ingrediants_list();
+
         return view;
     }
 
-    public void get_ingrediants_list(){
-        Ion.with(getActivity())
-                .load("http://clients.yellowsoft.in/test/recipes_settings.xml")
-                .asJsonArray()
-                .setCallback(new FutureCallback<JsonArray>() {
-                    @Override
-                    public void onCompleted(Exception e, JsonArray result) {
-                        JsonObject jsonObject = result.get(0).getAsJsonObject();
-                        JsonArray RecipeIngredientsList = jsonObject.get("RecipeIngredientsList").getAsJsonArray();
-                        for (int i = 0; i < RecipeIngredientsList.size(); i++) {
-                            Categories categories = new Categories(RecipeIngredientsList.get(i).getAsJsonObject(), getActivity());
-                            categoriesfrom_api.add(categories);
-                        }
 
-                        ingrediantsListAdapter.notifyDataSetChanged();
-                    }
-                });
-    }
 }

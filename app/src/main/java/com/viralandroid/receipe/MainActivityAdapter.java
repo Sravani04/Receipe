@@ -18,20 +18,16 @@ import java.util.ArrayList;
 public class MainActivityAdapter extends BaseAdapter {
     LayoutInflater inflater;
     Context context;
-    ArrayList<Integer> mimages;
-    ArrayList<String> mnumbers;
-    ArrayList<String> mnames;
+    ArrayList<Categories> categories;
 
-    public MainActivityAdapter(Context context,ArrayList<Integer> images,ArrayList<String> numbers,ArrayList<String> names){
+    public MainActivityAdapter(Context context,ArrayList<Categories> categories){
         this.context = context;
-        mimages = images;
-        mnumbers = numbers;
-        mnames = names;
+        this.categories = categories;
         inflater = LayoutInflater.from(context);
     }
     @Override
     public int getCount() {
-        return mimages.size();
+        return categories.size();
     }
 
     @Override
@@ -50,9 +46,9 @@ public class MainActivityAdapter extends BaseAdapter {
         TextView category_count = (TextView) item_view.findViewById(R.id.category_count);
         ImageView category_image = (ImageView) item_view.findViewById(R.id.category_image);
         TextView category_title  = (TextView) item_view.findViewById(R.id.category_title);
-        category_count.setText(mnumbers.get(position));
-        category_image.setImageResource(mimages.get(position));
-        category_title.setText(mnames.get(position));
+//        category_count.setText(mnumbers.get(position));
+      //  category_image.setImageResource(mimages.get(position));
+        category_title.setText(categories.get(position).name);
         return item_view;
     }
 }

@@ -17,15 +17,18 @@ public class RecipeListAdapter extends BaseAdapter {
     LayoutInflater inflater;
     Context context;
     ArrayList<String> mdescription;
+    ArrayList<Recipes> recipes;
 
-    public RecipeListAdapter(Context context,ArrayList<String> description){
+
+    public RecipeListAdapter(Context context,ArrayList<Recipes> recipes){
         this.context = context;
-        mdescription = description;
+        //mdescription = description;
+        this.recipes = recipes;
         inflater = LayoutInflater.from(context);
     }
     @Override
     public int getCount() {
-        return mdescription.size();
+        return recipes.size();
     }
 
     @Override
@@ -42,8 +45,7 @@ public class RecipeListAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         View item_view = inflater.inflate(R.layout.recipes_list,null);
         TextView description = (TextView) item_view.findViewById(R.id.description);
-        description.setText(mdescription.get(position));
-
+        description.setText(recipes.get(position).description);
         return item_view;
     }
 }

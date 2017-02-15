@@ -20,18 +20,19 @@ public class ProductsAdapter extends BaseAdapter {
     ArrayList<Integer> mimages;
     ArrayList<String> mtitles;
     ArrayList<String> mtime;
-
-    public ProductsAdapter(Context context,ArrayList<Integer> images,ArrayList<String> titles,ArrayList<String> time){
+    ArrayList<Recipes> recipes;
+    public ProductsAdapter(Context context,ArrayList<Recipes> recipes){
         this.context = context;
-        mimages = images;
-        mtitles = titles;
-        mtime   = time;
+//        mimages = images;
+//        mtitles = titles;
+//        mtime   = time;
+        this.recipes = recipes;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return mimages.size();
+        return recipes.size();
     }
 
     @Override
@@ -50,9 +51,10 @@ public class ProductsAdapter extends BaseAdapter {
         ImageView product_image = (ImageView) item_view.findViewById(R.id.product_image);
         TextView  product_title = (TextView) item_view.findViewById(R.id.product_title);
         TextView  product_time  = (TextView) item_view.findViewById(R.id.product_time);
-        product_image.setImageResource(mimages.get(position));
-        product_title.setText(mtitles.get(position));
-        product_time.setText(mtime.get(position));
+        //product_image.setImageResource(mimages.get(position));
+        product_title.setText(recipes.get(position).title);
+        product_time.setText(recipes.get(position).preparation_time);
+        //product_time.setText(mtime.get(position));
 
         return item_view;
     }

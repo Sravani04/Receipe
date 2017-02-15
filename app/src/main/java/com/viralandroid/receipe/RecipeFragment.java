@@ -22,6 +22,9 @@ public class RecipeFragment extends FragmentActivity {
     ImageView recipe_image,ingrediiants_image,methods_image;
     TextView recipe_title,ingrediants_title,methods_title;
     private String holder;
+    Recipes recipes_obj;
+    ImageView recipe_like,recipe_share;
+    TextView recipe_gluten,recipe_ct,recipe_portions,recipe_calories;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -29,6 +32,7 @@ public class RecipeFragment extends FragmentActivity {
         setContentView(R.layout.recipe_fragment);
         back_btn = (ImageView) findViewById(R.id.back_btn);
         recipe_cart = (ImageView) findViewById(R.id.recipe_cart);
+
         recipe_frame = (FrameLayout) findViewById(R.id.recipe_frame);
         recipes = (LinearLayout) findViewById(R.id.recipes);
         ingrediants = (LinearLayout) findViewById(R.id.ingrediants);
@@ -39,6 +43,22 @@ public class RecipeFragment extends FragmentActivity {
         recipe_title = (TextView) findViewById(R.id.recipe_title);
         ingrediants_title = (TextView) findViewById(R.id.ingrediants_title);
         methods_title = (TextView) findViewById(R.id.methods_title);
+
+        recipe_gluten = (TextView) findViewById(R.id.recipe_gluten);
+        recipe_ct = (TextView) findViewById(R.id.recipe_ct);
+        recipe_portions = (TextView) findViewById(R.id.recipe_portions);
+        recipe_calories = (TextView)  findViewById(R.id.recipe_calories);
+
+        try {
+            recipes_obj = (Recipes) getIntent().getSerializableExtra("recipe");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        recipe_gluten.setText(recipes_obj.gluten);
+        recipe_ct.setText(recipes_obj.cooking_time);
+        recipe_portions.setText(recipes_obj.portions);
+        recipe_calories.setText(recipes_obj.calories);
 
         reset_icons(2);
         reset_text_color(2);
@@ -51,6 +71,9 @@ public class RecipeFragment extends FragmentActivity {
                 reset_icons(1);
                 reset_text_color(1);
                 RecipeListFragment recipeListFragment = new RecipeListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("recipe",recipes_obj);
+                recipeListFragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.recipe_frame,recipeListFragment).commit();
             }
         });

@@ -1,19 +1,25 @@
 package com.viralandroid.receipe;
 
-import android.content.Context;
-
-import com.google.gson.JsonObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by T on 14-02-2017.
  */
 
 public class Categories  {
-    public String RecipeIngredientsName,RecipeIngredientsQuantity;
-    public Categories(JsonObject jsonObject, Context context){
-        RecipeIngredientsQuantity = jsonObject.get("RecipeIngredientsQuantity").getAsString();
-        RecipeIngredientsName = jsonObject.get("RecipeIngredientsName").getAsString();
+    public String name,icon;
+    public Categories(JSONObject jsonObject){
+        try {
+            name = jsonObject.getString("name");
+            icon = jsonObject.getString("icon");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
+
 }
 
 
