@@ -3,11 +3,13 @@ package com.viralandroid.receipe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by T on 14-02-2017.
  */
 
-public class Categories  {
+public class Categories implements Serializable {
     public String name,icon;
     public Categories(JSONObject jsonObject){
         try {

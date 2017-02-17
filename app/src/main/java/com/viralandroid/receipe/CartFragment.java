@@ -1,12 +1,12 @@
 package com.viralandroid.receipe;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -20,12 +20,21 @@ public class CartFragment extends Activity {
     ArrayList<String> spoons;
     ArrayList<String> items;
     ImageView back_btn;
+    Recipes recipes_obj;
+    TextView clear_list;
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(final Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cart_list);
         listView = (ListView) findViewById(R.id.cart_list);
         back_btn = (ImageView) findViewById(R.id.back_btn);
+        clear_list = (TextView) findViewById(R.id.clear_list);
+
+        try {
+            recipes_obj = (Recipes) getIntent().getSerializableExtra("recipe");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         spoons = new ArrayList<>();
         items  = new ArrayList<>();
@@ -53,12 +62,18 @@ public class CartFragment extends Activity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CartFragment.this,RecipeFragment.class);
-                startActivity(intent);
+                CartFragment.this.onBackPressed();
             }
         });
 
-        cartAdapter = new CartAdapter(this,spoons,items);
+        clear_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        cartAdapter = new CartAdapter(this,recipes_obj);
         listView.setAdapter(cartAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

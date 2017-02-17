@@ -40,11 +40,11 @@
 
                 <TextView
                     android:text="Squash, sage and chestnut rolls"
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="match_parent"
                     android:id="@+id/product_title"
                     android:textColor="#ffffff"
-                    android:textSize="17sp"
+                    android:textSize="16sp"
                     android:gravity="center_vertical"
                     android:paddingLeft="5dp" />
 
@@ -60,28 +60,27 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="5dp"
                         android:gravity="right|center_horizontal|end"
                         android:layout_gravity="right|end"
                         android:foregroundGravity="right">
 
                         <ImageView
-                            android:layout_width="25dp"
                             android:layout_height="40dp"
                             android:id="@+id/imageView5"
                             android:tint="#ffffff"
                             android:adjustViewBounds="true"
                             android:src="@drawable/cook"
-                            android:layout_marginTop="7dp" />
+                            android:layout_marginTop="7dp"
+                            android:layout_width="25dp" />
 
                         <TextView
                             android:text="60 mins"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:id="@+id/product_time"
                             android:gravity="center_vertical"
                             android:textColor="#ffffff"
-                            android:textSize="17sp"
+                            android:textSize="14sp"
                             android:layout_marginLeft="2dp" />
                     </LinearLayout>
 

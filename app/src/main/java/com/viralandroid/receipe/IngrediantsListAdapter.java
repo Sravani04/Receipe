@@ -18,16 +18,22 @@ public class IngrediantsListAdapter extends BaseAdapter {
     Context context;
     ArrayList<String> mspoons;
     ArrayList<String> mitems;
+    Recipes recipes;
 
-    public IngrediantsListAdapter(Context context,ArrayList<String> spoons,ArrayList<String>items){
+//    ,ArrayList<String> spoons,ArrayList<String> items
+
+
+    public IngrediantsListAdapter(Context context,Recipes recipes){
         this.context = context;
-        mspoons = spoons;
-        mitems  = items;
+        this.recipes = recipes;
+//        mspoons = spoons;
+//        mitems = items;
         inflater = LayoutInflater.from(context);
     }
+
     @Override
     public int getCount() {
-        return mspoons.size();
+        return recipes.ingredients.size();
     }
 
     @Override
@@ -45,8 +51,8 @@ public class IngrediantsListAdapter extends BaseAdapter {
         View item_view = inflater.inflate(R.layout.ingrediants_list,null);
         TextView spoons = (TextView) item_view.findViewById(R.id.spoons);
         TextView item = (TextView) item_view.findViewById(R.id.item);
-        spoons.setText(mspoons.get(position));
-        item.setText(mitems.get(position));
+        spoons.setText(recipes.ingredients.get(position).ingredient_quantity);
+        item.setText(recipes.ingredients.get(position).ingredient_name);
         return item_view;
     }
 }

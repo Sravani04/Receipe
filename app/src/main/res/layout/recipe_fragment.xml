@@ -39,7 +39,7 @@
                         android:text="Fruit recipes"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:id="@+id/textView9"
+                        android:id="@+id/category_title"
                         android:gravity="center_vertical"
                         android:textSize="18sp"
                         android:textColor="#ffa500"
@@ -164,7 +164,16 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_below="@+id/line"
-            android:id="@+id/banner"></LinearLayout>
+            android:id="@+id/banner">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/product_image"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hasselback_potatoes01" />
+        </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -175,37 +184,37 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#7f7f7f">
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/textView10"
-                    android:text="Squash, sage and chestnut rolls   "
+                    android:id="@+id/product_title"
+                    android:text="Squash, sage and chestnut rolls         "
                     android:textColor="#ffffff"
                     android:textSize="16sp"
-                    android:paddingLeft="3dp"
+                    android:paddingLeft="5dp"
                     android:gravity="center_vertical" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/recipe_like"
                     android:background="#333333"
-                    android:src="@drawable/fav" />
+                    android:src="@drawable/fav"
+                    android:layout_width="55dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -214,13 +223,13 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="70dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/recipe_share"
                     android:layout_marginLeft="2dp"
                     android:background="#333333"
-                    android:src="@drawable/fav"
-                    android:layout_weight="1" />
+                    android:src="@drawable/share_icon"
+                    android:padding="10dp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -322,31 +331,31 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="#b2b2b2"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/vertical_line"
-            android:layout_above="@+id/recipe_frame"
-            android:layout_below="@+id/recipe_body"
-            android:layout_height="1dp"></LinearLayout>
-
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/footer"
             android:id="@+id/recipe_frame"
             android:layout_marginBottom="7dp"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/recipe_body">
+            android:layout_below="@+id/recipe_body"
+            android:layout_marginTop="5dp">
 
         </FrameLayout>
 
-</RelativeLayout>
+        <!--<LinearLayout-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:background="#b2b2b2"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:id="@+id/recipe_line"-->
+            <!--android:layout_above="@+id/recipe_frame"-->
+            <!--android:layout_below="@+id/recipe_body"-->
+            <!--android:layout_height="1dp"></LinearLayout>-->
+
+
+    </RelativeLayout>
 
 
 </LinearLayout>

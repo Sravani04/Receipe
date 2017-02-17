@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 
@@ -47,8 +49,9 @@ public class MainActivityAdapter extends BaseAdapter {
         ImageView category_image = (ImageView) item_view.findViewById(R.id.category_image);
         TextView category_title  = (TextView) item_view.findViewById(R.id.category_title);
 //        category_count.setText(mnumbers.get(position));
-      //  category_image.setImageResource(mimages.get(position));
+      //category_image.setImageResource(mimages.get(position));
         category_title.setText(categories.get(position).name);
+        Picasso.with(context).load(categories.get(position).icon).placeholder(R.drawable.chocolate_caramel01).into(category_image);
         return item_view;
     }
 }

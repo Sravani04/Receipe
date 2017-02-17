@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 /**
@@ -55,6 +57,7 @@ public class ProductsAdapter extends BaseAdapter {
         product_title.setText(recipes.get(position).title);
         product_time.setText(recipes.get(position).preparation_time);
         //product_time.setText(mtime.get(position));
+        Picasso.with(context).load(recipes.get(position).picture).placeholder(R.drawable.gennaros_pasta01).into(product_image);
 
         return item_view;
     }

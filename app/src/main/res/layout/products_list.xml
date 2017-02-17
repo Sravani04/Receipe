@@ -41,7 +41,7 @@
                 android:text="Fruit recipes"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/textView4"
+                android:id="@+id/category_name"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textSize="17sp"

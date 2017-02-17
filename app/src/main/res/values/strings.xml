@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Receipe</string>
-</resources>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world</string>
+    <string name="imgdesc">imgdesc</string><string-array name="titles">
+    <item>Friut recipes</item>
+    <item>Beef recipes</item>
+    <item>Chicken recipes</item>
+    <item>Pasta recipes</item>
+    <item>Fish recipes</item>
+    <item>Desserts recipes</item>
+    <item>Others</item>
+    <item>My Favorites</item>
+    <item>Shopping List</item>
+    <item>About Us</item>
+    </string-array>
+    <array name="icons">
+    <item>@drawable/fruit_recipe</item>
+    <item>@drawable/beef_recipe</item>
+    <item>@drawable/chicken_recipe</item>
+        <item>@drawable/pasta_recipe</item>
+        <item>@drawable/fish_recipe</item>
+        <item>@drawable/desserts_recipe</item>
+        <item>@drawable/others</item>
+        <item>@drawable/favorites</item>
+        <item>@drawable/shopping</item>
+        <item>@drawable/about</item>
+
+</array>
+    </resources>

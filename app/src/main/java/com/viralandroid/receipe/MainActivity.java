@@ -3,7 +3,6 @@ package com.viralandroid.receipe;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -66,8 +65,9 @@ public class MainActivity extends FragmentActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this,ProductsActivity.class);
                 try {
-                    Log.e("recipe response",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
+//                    Log.e("recipe response",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
                     intent.putExtra("recipe",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
+                    intent.putExtra("category",categories.get(i));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

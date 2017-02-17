@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by T on 14-02-2017.
  */
@@ -21,10 +23,15 @@ public class RecipeFragment extends FragmentActivity {
     LinearLayout recipes,ingrediants,methods;
     ImageView recipe_image,ingrediiants_image,methods_image;
     TextView recipe_title,ingrediants_title,methods_title;
+    TextView category_title,product_title;
     private String holder;
     Recipes recipes_obj;
     ImageView recipe_like,recipe_share;
     TextView recipe_gluten,recipe_ct,recipe_portions,recipe_calories;
+    Categories categories;
+    ImageView product_image;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -32,7 +39,6 @@ public class RecipeFragment extends FragmentActivity {
         setContentView(R.layout.recipe_fragment);
         back_btn = (ImageView) findViewById(R.id.back_btn);
         recipe_cart = (ImageView) findViewById(R.id.recipe_cart);
-
         recipe_frame = (FrameLayout) findViewById(R.id.recipe_frame);
         recipes = (LinearLayout) findViewById(R.id.recipes);
         ingrediants = (LinearLayout) findViewById(R.id.ingrediants);
@@ -43,11 +49,16 @@ public class RecipeFragment extends FragmentActivity {
         recipe_title = (TextView) findViewById(R.id.recipe_title);
         ingrediants_title = (TextView) findViewById(R.id.ingrediants_title);
         methods_title = (TextView) findViewById(R.id.methods_title);
-
         recipe_gluten = (TextView) findViewById(R.id.recipe_gluten);
         recipe_ct = (TextView) findViewById(R.id.recipe_ct);
         recipe_portions = (TextView) findViewById(R.id.recipe_portions);
         recipe_calories = (TextView)  findViewById(R.id.recipe_calories);
+        category_title = (TextView) findViewById(R.id.category_title);
+        product_title = (TextView) findViewById(R.id.product_title);
+        recipe_like = (ImageView) findViewById(R.id.recipe_like);
+        recipe_share = (ImageView) findViewById(R.id.recipe_share);
+        product_image = (ImageView) findViewById(R.id.product_image);
+
 
         try {
             recipes_obj = (Recipes) getIntent().getSerializableExtra("recipe");
@@ -55,14 +66,22 @@ public class RecipeFragment extends FragmentActivity {
             e.printStackTrace();
         }
 
+
         recipe_gluten.setText(recipes_obj.gluten);
         recipe_ct.setText(recipes_obj.cooking_time);
         recipe_portions.setText(recipes_obj.portions);
         recipe_calories.setText(recipes_obj.calories);
+        product_title.setText(recipes_obj.title);
+        Picasso.with(this).load(recipes_obj.picture).placeholder(R.drawable.chocolate_caramel01).into(product_image);
+
+
 
         reset_icons(2);
         reset_text_color(2);
         IngrediantsListFragment ingrediantsListFragment = new IngrediantsListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("ingredient",recipes_obj);
+        ingrediantsListFragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction().replace(R.id.recipe_frame,ingrediantsListFragment).commit();
 
         recipes.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +103,9 @@ public class RecipeFragment extends FragmentActivity {
                 reset_icons(2);
                 reset_text_color(2);
                 IngrediantsListFragment ingrediantsListFragment = new IngrediantsListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("ingredient",recipes_obj);
+                ingrediantsListFragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.recipe_frame,ingrediantsListFragment).commit();
             }
         });
@@ -94,6 +116,9 @@ public class RecipeFragment extends FragmentActivity {
                 reset_icons(3);
                 reset_text_color(3);
                 MethodsListFragment methodsListFragment = new MethodsListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("method",recipes_obj);
+                methodsListFragment.setArguments(bundle);
                 getSupportFragmentManager().beginTransaction().replace(R.id.recipe_frame,methodsListFragment).commit();
             }
         });
@@ -102,6 +127,7 @@ public class RecipeFragment extends FragmentActivity {
             @Override
             public void onClick(View view) {
                Intent intent = new Intent(RecipeFragment.this,CartFragment.class);
+                intent.putExtra("recipe",recipes_obj);
                 startActivity(intent);
             }
         });
@@ -109,8 +135,19 @@ public class RecipeFragment extends FragmentActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RecipeFragment.this,ProductsActivity.class);
-                startActivity(intent);
+                RecipeFragment.this.onBackPressed();
+            }
+        });
+
+
+        recipe_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Intent.ACTION_SEND);
+                i.setType("text/plain");
+                i.putExtra(Intent.EXTRA_SUBJECT,recipes_obj.title);
+                i.putExtra(Intent.EXTRA_TEXT, recipes_obj.description);
+                RecipeFragment.this.startActivity(Intent.createChooser(i,"Share via"));
             }
         });
     }

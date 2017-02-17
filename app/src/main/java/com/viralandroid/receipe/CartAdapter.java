@@ -18,16 +18,18 @@ public class CartAdapter extends BaseAdapter {
     Context context;
     ArrayList<String> mspoons;
     ArrayList<String> mitems;
+    Recipes recipes;
 
-    public CartAdapter(Context context,ArrayList<String> spoons,ArrayList<String> items){
+    public CartAdapter(Context context,Recipes recipes){
         this.context = context;
-        mspoons = spoons;
-        mitems  = items;
+        this.recipes = recipes;
+//        mspoons = spoons;
+//        mitems  = items;
         inflater = LayoutInflater.from(context);
     }
     @Override
     public int getCount() {
-        return mspoons.size();
+        return recipes.ingredients.size();
     }
 
     @Override
@@ -45,8 +47,9 @@ public class CartAdapter extends BaseAdapter {
         View item_view = inflater.inflate(R.layout.cart_list_items,null);
         TextView recipe_spoons = (TextView) item_view.findViewById(R.id.recipe_spoons);
         TextView recipe_items = (TextView) item_view.findViewById(R.id.recipe_items);
-        recipe_spoons.setText(mspoons.get(position));
-        recipe_items.setText(mitems.get(position));
+        recipe_spoons.setText(recipes.ingredients.get(position).ingredient_quantity);
+        recipe_items.setText(recipes.ingredients.get(position).ingredient_name);
         return item_view;
     }
+
 }

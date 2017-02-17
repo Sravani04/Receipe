@@ -42,7 +42,7 @@
                 android:text="Clear List"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/textView25"
+                android:id="@+id/clear_list"
                 android:gravity="center_vertical|center_horizontal"
                 android:textSize="16sp"
                 android:textColor="#ffa500"
