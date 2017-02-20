@@ -76,13 +76,13 @@ public class RecipeFragment extends FragmentActivity {
 
 
 
-        reset_icons(2);
-        reset_text_color(2);
-        IngrediantsListFragment ingrediantsListFragment = new IngrediantsListFragment();
+        reset_icons(1);
+        reset_text_color(1);
+        RecipeListFragment recipeListFragment = new RecipeListFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("ingredient",recipes_obj);
-        ingrediantsListFragment.setArguments(bundle);
-        getSupportFragmentManager().beginTransaction().replace(R.id.recipe_frame,ingrediantsListFragment).commit();
+        bundle.putSerializable("recipe",recipes_obj);
+        recipeListFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.recipe_frame,recipeListFragment).commit();
 
         recipes.setOnClickListener(new View.OnClickListener() {
             @Override
