@@ -88,7 +88,7 @@
                             android:layout_width="50dp"
                             android:layout_height="40dp"
                             android:id="@+id/recipe_image"
-                            android:src="@drawable/tab_bar_summary2" />
+                            android:src="@drawable/tab_bar_ingredients2x3" />
 
                         <TextView
                             android:text="Recipes"
@@ -96,7 +96,8 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/recipe_title"
                             android:layout_marginLeft="5dp"
-                            android:paddingRight="5dp" />
+                            android:paddingRight="5dp"
+                            android:textColor="#ffa500" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -111,14 +112,13 @@
                             android:layout_width="50dp"
                             android:layout_height="40dp"
                             android:id="@+id/ingrediants_image"
-                            android:src="@drawable/tab_bar_ingredients_active" />
+                            android:src="@drawable/tab_bar_ingredients2x1" />
 
                         <TextView
                             android:text="Ingredients"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/ingrediants_title"
-                            android:textColor="#ffa500"
                             android:gravity="center_horizontal" />
                     </LinearLayout>
 
