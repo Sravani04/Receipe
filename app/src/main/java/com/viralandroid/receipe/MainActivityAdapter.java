@@ -20,6 +20,9 @@ import java.util.ArrayList;
 public class MainActivityAdapter extends BaseAdapter {
     LayoutInflater inflater;
     Context context;
+    ArrayList<Integer> mimages;
+    ArrayList<String> mnumbers;
+    ArrayList<String> mnames;
     ArrayList<Categories> categories;
 
     public MainActivityAdapter(Context context,ArrayList<Categories> categories){
@@ -27,6 +30,8 @@ public class MainActivityAdapter extends BaseAdapter {
         this.categories = categories;
         inflater = LayoutInflater.from(context);
     }
+
+
     @Override
     public int getCount() {
         return categories.size();
@@ -49,9 +54,10 @@ public class MainActivityAdapter extends BaseAdapter {
         ImageView category_image = (ImageView) item_view.findViewById(R.id.category_image);
         TextView category_title  = (TextView) item_view.findViewById(R.id.category_title);
 //        category_count.setText(mnumbers.get(position));
-      //category_image.setImageResource(mimages.get(position));
-        category_title.setText(categories.get(position).name);
-        Picasso.with(context).load(categories.get(position).icon).placeholder(R.drawable.chocolate_caramel01).into(category_image);
+//        category_image.setImageResource(mimages.get(position));
+//        category_title.setText(mnames.get(position));
+       category_title.setText(categories.get(position).name);
+       Picasso.with(context).load(categories.get(position).icon).placeholder(R.drawable.chocolate_caramel01).into(category_image);
         return item_view;
     }
 }

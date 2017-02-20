@@ -13,10 +13,12 @@
             android:layout_height="50dp">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView2"
-                android:src="@drawable/action" />
+                android:id="@+id/menu_btn"
+                android:src="@drawable/action"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false" />
 
             <TextView
                 android:text="ReceipesPLus"

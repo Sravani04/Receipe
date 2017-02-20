@@ -42,7 +42,7 @@ public class SplashActivity extends Activity {
                     JSONObject jsonObject = xmlToJson.toJson();
 
                     Log.e("json res",jsonObject.toString());
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, ExampleMainActivity.class);
                     try {
                         intent.putExtra("json",jsonObject.getJSONObject("Settings").toString());
                     } catch (JSONException e1) {

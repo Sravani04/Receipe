@@ -334,25 +334,25 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/footer"
             android:id="@+id/recipe_frame"
             android:layout_marginBottom="7dp"
             android:layout_below="@+id/recipe_body"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            android:layout_above="@+id/footer">
 
         </FrameLayout>
 
-        <!--<LinearLayout-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:layout_marginBottom="5dp"-->
-            <!--android:background="#b2b2b2"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:id="@+id/recipe_line"-->
-            <!--android:layout_above="@+id/recipe_frame"-->
-            <!--android:layout_below="@+id/recipe_body"-->
-            <!--android:layout_height="1dp"></LinearLayout>-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="#b2b2b2"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/recipe_line"
+            android:layout_above="@+id/recipe_frame"
+            android:layout_below="@+id/recipe_body"
+            android:layout_height="1dp"></LinearLayout>
 
 
     </RelativeLayout>

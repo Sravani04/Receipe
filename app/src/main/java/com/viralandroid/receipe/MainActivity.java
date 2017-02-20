@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity  {
     ListView listView;
     MainActivityAdapter  mainActivityAdapter;
     ArrayList<Integer> images;

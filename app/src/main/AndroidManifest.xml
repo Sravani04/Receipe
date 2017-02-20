@@ -19,10 +19,6 @@
         <activity android:name=".RecipeFragment"></activity>
         <activity android:name=".CartFragment"></activity>
         <activity android:name=".ExampleMainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
         </activity>
     </application>
 
