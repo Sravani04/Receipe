@@ -166,16 +166,29 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
-                selectItem(i);
-
-                Intent intent = new Intent(getActivity(),ProductsActivity.class);
-                try {
-                    intent.putExtra("recipe",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
-                    intent.putExtra("category",categories.get(i));
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(i==8){
+                    ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).commit();
+                }else if (i==7){
+                    MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).commit();
+                }else if (i==9){
+                    AboutUsFragment aboutUsFragment = new AboutUsFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.container,aboutUsFragment).commit();
                 }
-                startActivity(intent);
+                else{
+                    selectItem(i);
+                    Intent intent = new Intent(getActivity(), ProductsActivity.class);
+                    try {
+                        intent.putExtra("recipe", jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
+                        intent.putExtra("category", categories.get(i));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    startActivity(intent);
+                }
+
+
             }
         });
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
@@ -289,10 +302,7 @@ public class NavigationDrawerFragment extends Fragment {
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
-        if (position == 8){
-            ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
-            getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).commit();
-        }
+
     }
 
     @Override
