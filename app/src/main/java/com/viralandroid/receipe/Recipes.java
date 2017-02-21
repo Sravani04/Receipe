@@ -25,15 +25,13 @@ public class Recipes implements Serializable {
         try {
             id = jsonObject.getString("id");
             title = jsonObject.getString("RecipeTitle");
+            picture = jsonObject.getJSONObject("RecipePictureList").getString("RecipePicture");
             gluten = jsonObject.getJSONObject("RecipeSummary").getString("RecipeSummaryGluten");
             preparation_time =jsonObject.getJSONObject("RecipeSummary").getString("RecipeSummaryPreparationTime");
             cooking_time =jsonObject.getJSONObject("RecipeSummary").getString("RecipeSummaryCookingTime");
             portions =jsonObject.getJSONObject("RecipeSummary").getString("RecipeSummaryPortions");
             calories =jsonObject.getJSONObject("RecipeSummary").getString("RecipeSummaryCalories");
             description =jsonObject.getJSONObject("RecipeSummary").getString("RecipeSummaryDescription");
-            picture = jsonObject.getJSONObject("RecipePictureList").getString("RecipePicture");
-
-
 
             ingredients = new ArrayList<>();
 
