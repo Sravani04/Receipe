@@ -131,17 +131,29 @@ public class NavigationDrawerFragment extends Fragment {
             for (int i =0;i<jsonObject.getJSONArray("Category").length();i++) {
                 categories.add(new Categories(jsonArray.getJSONObject(i)));
             }
+            JSONObject temp = new JSONObject();
+            temp.put("name","My Favorites");
+            temp.put("icon",R.drawable.favorites);
+            categories.add(new Categories(temp));
+
+            JSONObject temp1 = new JSONObject();
+            temp1.put("name","Shopping List");
+            temp1.put("icon",R.drawable.shopping);
+            categories.add(new Categories(temp1));
+
+            JSONObject temp2 = new JSONObject();
+            temp2.put("name","About Us");
+            temp2.put("icon",R.drawable.about);
+            categories.add(new Categories(temp2));
+
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
-        titles = new String[]{getString(R.string.favorites),getString(R.string.shopping_list),getString(R.string.About)};
-
-
         images = new int[] { R.drawable.fruit_recipe, R.drawable.beef_recipe,
-                R.drawable.chicken_recipe,R.drawable.pasta_recipe,R.drawable.fish_recipe,R.drawable.desserts_recipe,R.drawable.others };
+                R.drawable.chicken_recipe,R.drawable.pasta_recipe,R.drawable.fish_recipe,R.drawable.desserts_recipe,R.drawable.others,R.drawable.favorites,R.drawable.shopping,R.drawable.about};
 
 
         selectedposition = new int[] { mCurrentSelectedPosition };
@@ -152,15 +164,6 @@ public class NavigationDrawerFragment extends Fragment {
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0) {
-                    images[0] = R.drawable.fruit_recipe;
-                    images[1] = R.drawable.beef_recipe;
-                    images[2] = R.drawable.chicken_recipe;
-                } else if (i == 1) {
-                    images[0] = R.drawable.fruit_recipe;
-                    images[1] = R.drawable.beef_recipe;
-                    images[2] = R.drawable.chicken_recipe;
-                }
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
                 selectItem(i);
@@ -285,6 +288,10 @@ public class NavigationDrawerFragment extends Fragment {
         }
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
+        }
+        if (position == 8){
+            ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
+            getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).commit();
         }
     }
 
