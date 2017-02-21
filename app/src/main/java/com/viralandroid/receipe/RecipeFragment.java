@@ -72,7 +72,7 @@ public class RecipeFragment extends FragmentActivity {
         recipe_portions.setText(recipes_obj.portions);
         recipe_calories.setText(recipes_obj.calories);
         product_title.setText(recipes_obj.title);
-        Picasso.with(this).load(recipes_obj.picture).placeholder(R.drawable.chocolate_caramel01).into(product_image);
+        Picasso.with(this).load(recipes_obj.picture).placeholder(R.drawable.gennaros_pasta01).into(product_image);
 
 
 
