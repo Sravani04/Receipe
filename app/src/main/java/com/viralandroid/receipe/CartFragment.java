@@ -1,9 +1,11 @@
 package com.viralandroid.receipe;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  * Created by T on 14-02-2017.
  */
 
-public class CartFragment extends Activity {
+public class CartFragment extends Fragment {
     CartAdapter cartAdapter;
     ListView listView;
     ArrayList<String> spoons;
@@ -24,18 +26,12 @@ public class CartFragment extends Activity {
     Recipes recipes_obj;
     TextView clear_list;
     @Override
-    public void onCreate(final Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.cart_list);
-        listView = (ListView) findViewById(R.id.cart_list);
-        back_btn = (ImageView) findViewById(R.id.back_btn);
-        clear_list = (TextView) findViewById(R.id.clear_list);
+  public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState){
+        final View view  = inflater.inflate(R.layout.cart_list,container,false);
+        listView = (ListView) view.findViewById(R.id.cart_list);
+        back_btn = (ImageView) view.findViewById(R.id.back_btn);
+        clear_list = (TextView) view.findViewById(R.id.clear_list);
 
-        try {
-            recipes_obj = (Recipes) getIntent().getSerializableExtra("recipe");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         spoons = new ArrayList<>();
         items  = new ArrayList<>();
@@ -63,7 +59,7 @@ public class CartFragment extends Activity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CartFragment.this.onBackPressed();
+                getActivity().onBackPressed();
             }
         });
 
@@ -71,12 +67,13 @@ public class CartFragment extends Activity {
             @Override
             public void onClick(View view) {
                 Log.e("clear_response",recipes_obj.ingredients.toString());
-                recipes_obj.ingredients.clear();
+                spoons.clear();
+                items.clear();
                 cartAdapter.notifyDataSetChanged();
             }
         });
 
-        cartAdapter = new CartAdapter(this,recipes_obj);
+        cartAdapter = new CartAdapter(getActivity(),spoons,items);
         listView.setAdapter(cartAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,6 +81,8 @@ public class CartFragment extends Activity {
 
             }
         });
+
+        return view;
 
     }
 }

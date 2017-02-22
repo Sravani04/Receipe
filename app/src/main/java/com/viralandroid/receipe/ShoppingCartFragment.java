@@ -39,6 +39,12 @@ public class ShoppingCartFragment extends Fragment {
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
         clear_list = (TextView) view.findViewById(R.id.clear_list);
 
+        try {
+            recipes = (Recipes) getArguments().getSerializable("cart");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         spoons = new ArrayList<>();
         items  = new ArrayList<>();
 
@@ -67,7 +73,7 @@ public class ShoppingCartFragment extends Fragment {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().onBackPressed();
+              getActivity().onBackPressed();
             }
         });
 
@@ -75,13 +81,12 @@ public class ShoppingCartFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.e("clear",spoons.toString());
-                spoons.clear();
-                items.clear();
+                recipes.ingredients.clear();
                 shoppingCartAdapter.notifyDataSetChanged();
             }
         });
 
-        shoppingCartAdapter = new ShoppingCartAdapter(getActivity(),spoons,items);
+        shoppingCartAdapter = new ShoppingCartAdapter(getActivity(),recipes);
         listView.setAdapter(shoppingCartAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

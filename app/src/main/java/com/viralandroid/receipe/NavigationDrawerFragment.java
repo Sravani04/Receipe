@@ -5,7 +5,6 @@ package com.viralandroid.receipe;
  */
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -167,28 +166,30 @@ public class NavigationDrawerFragment extends Fragment {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
                 if(i==8){
-                    ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).commit();
+                    CartFragment cartFragment = new CartFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 }else if (i==7){
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).addToBackStack("favorites").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 }else if (i==9){
                     AboutUsFragment aboutUsFragment = new AboutUsFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container,aboutUsFragment).commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container,aboutUsFragment).addToBackStack("about").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 }
                 else{
                     selectItem(i);
-                    Intent intent = new Intent(getActivity(), ProductsActivity.class);
+                    ProductsFragment productsFragment = new ProductsFragment();
+                    Bundle bundle = new Bundle();
                     try {
-                        intent.putExtra("recipe", jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
-                        intent.putExtra("category", categories.get(i));
+                        bundle.putString("recipe",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
+                        bundle.putSerializable("category",categories.get(i));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    startActivity(intent);
+                    productsFragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.container,productsFragment).addToBackStack("category").commit();
                 }
 
 

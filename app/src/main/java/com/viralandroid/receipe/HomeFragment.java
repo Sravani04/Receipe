@@ -5,7 +5,6 @@ package com.viralandroid.receipe;
  */
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -129,14 +128,16 @@ NavigationDrawerCallbacks mCallbacks;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(),ProductsActivity.class);
+                ProductsFragment productsFragment = new ProductsFragment();
+                Bundle bundle = new Bundle();
                 try {
-                    intent.putExtra("recipe",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
-                    intent.putExtra("category",categories.get(i));
+                    bundle.putString("recipe",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
+                    bundle.putSerializable("category",categories.get(i));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                startActivity(intent);
+                productsFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.container,productsFragment).addToBackStack("category").commit();
             }
         });
 
