@@ -169,12 +169,15 @@ public class NavigationDrawerFragment extends Fragment {
                 if(i==8){
                     ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).commit();
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
                 }else if (i==7){
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).commit();
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
                 }else if (i==9){
                     AboutUsFragment aboutUsFragment = new AboutUsFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,aboutUsFragment).commit();
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
                 }
                 else{
                     selectItem(i);
