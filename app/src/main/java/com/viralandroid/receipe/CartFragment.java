@@ -2,6 +2,7 @@ package com.viralandroid.receipe;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -69,7 +70,9 @@ public class CartFragment extends Activity {
         clear_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Log.e("clear_response",recipes_obj.ingredients.toString());
+                recipes_obj.ingredients.clear();
+                cartAdapter.notifyDataSetChanged();
             }
         });
 

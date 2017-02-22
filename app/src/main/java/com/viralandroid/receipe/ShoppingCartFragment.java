@@ -2,6 +2,7 @@ package com.viralandroid.receipe;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,7 +33,7 @@ public class ShoppingCartFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState){
         final View view  = inflater.inflate(R.layout.cart_list,container,false);
         listView = (ListView) view.findViewById(R.id.cart_list);
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
@@ -73,7 +74,10 @@ public class ShoppingCartFragment extends Fragment {
         clear_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Log.e("clear",spoons.toString());
+                spoons.clear();
+                items.clear();
+                shoppingCartAdapter.notifyDataSetChanged();
             }
         });
 
