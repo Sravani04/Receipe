@@ -13,6 +13,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class MyDrawerAdapter extends BaseAdapter {
@@ -23,6 +25,8 @@ public class MyDrawerAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private int[] selectedposition;
     ArrayList<Categories>categories;
+    ArrayList<Category> category;
+
 
 //    public MyDrawerAdapter(Context context, String[] titles, int[] images,
 //                           int[] selectedposition) {
@@ -34,13 +38,13 @@ public class MyDrawerAdapter extends BaseAdapter {
 //        this.selectedposition = selectedposition;
 //    }
 
-    public MyDrawerAdapter(Context context, ArrayList<Categories>categories,int[] images,
+    public MyDrawerAdapter(Context context, ArrayList<Category>category,int[] images,
                            int[] selectedposition) {
         // TODO Auto-generated constructor stub
         this.context = context;
         this.titles = titles;
         this.images = images;
-        this.categories = categories;
+        this.category = category;
         this.inflater = LayoutInflater.from(this.context);
         this.selectedposition = selectedposition;
     }
@@ -48,7 +52,7 @@ public class MyDrawerAdapter extends BaseAdapter {
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return categories.size();
+        return category.size();
     }
 
     @Override
@@ -84,8 +88,9 @@ public class MyDrawerAdapter extends BaseAdapter {
 //        mViewHolder.tvTitle.setText(titles[position]);
 //        mViewHolder.ivIcon.setImageResource(images[position]);
 
-        mViewHolder.tvTitle.setText(categories.get(position).name);
-        mViewHolder.ivIcon.setImageResource(images[position]);
+        mViewHolder.tvTitle.setText(category.get(position).title);
+//        mViewHolder.ivIcon.setImageResource(images[position]);
+        Picasso.with(context).load(category.get(position).image).placeholder(R.drawable.placeholder).into(mViewHolder.ivIcon);
 
 
         //Highlight the selected list item

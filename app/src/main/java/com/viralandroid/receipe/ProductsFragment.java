@@ -1,5 +1,6 @@
 package com.viralandroid.receipe;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,6 +10,10 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.gson.JsonArray;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +37,11 @@ public class ProductsFragment extends Fragment {
     JSONObject jsonObject;
     ArrayList<Recipes> recipes;
     Categories categories_obj;
+    ArrayList<Products> productsfrom_api;
+    Category category;
+    String id;
+    Products products;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         final View view = inflater.inflate(R.layout.products_list,container,false);
@@ -39,14 +49,16 @@ public class ProductsFragment extends Fragment {
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
         category_name = (TextView) view.findViewById(R.id.category_name);
 
-        try {
-            jsonArray = new JSONArray(getArguments().getString("recipe"));
-            categories_obj = (Categories) getArguments().getSerializable("category");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            jsonArray = new JSONArray(getArguments().getString("recipe"));
+//            categories_obj = (Categories) getArguments().getSerializable("category");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
-        category_name.setText(categories_obj.name);
+        category = (Category) getArguments().getSerializable("category_obj");
+
+        category_name.setText(category.title);
 
         images = new ArrayList<>();
         titles = new ArrayList<>();
@@ -75,31 +87,67 @@ public class ProductsFragment extends Fragment {
             }
         });
 
-        recipes = new ArrayList<>();
+        productsfrom_api = new ArrayList<>();
 
-        try {
-            for (int i =0;i<getArguments().getString("recipe").length();i++) {
-                recipes.add(new Recipes(jsonArray.getJSONObject(i)));
+//        recipes = new ArrayList<>();
+//
+//        try {
+//            for (int i =0;i<getArguments().getString("recipe").length();i++) {
+//                recipes.add(new Recipes(jsonArray.getJSONObject(i)));
+//
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        productsAdapter = new ProductsAdapter(getActivity(),recipes);
+        productsAdapter = new ProductsAdapter(getActivity(),productsfrom_api);
         listView.setAdapter(productsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 RecipeMainFragment recipeMainFragment = new RecipeMainFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("recipe",recipes.get(i));
+                bundle.putSerializable("product",productsfrom_api.get(i));
+                bundle.putSerializable("time2",productsfrom_api.get(i).time2);
+                bundle.putSerializable("price",productsfrom_api.get(i).price);
+                bundle.putSerializable("calories",productsfrom_api.get(i).calories);
+                bundle.putSerializable("image",productsfrom_api.get(i).images.get(i).image);
+                bundle.putSerializable("title",productsfrom_api.get(i).title);
+                bundle.putSerializable("id",productsfrom_api.get(i).id);
                 recipeMainFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.container,recipeMainFragment).addToBackStack("recipe").commit();
             }
         });
-
+        get_products();
         return view;
+    }
+
+    public void get_products(){
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("please wait..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        Ion.with(getContext())
+                .load("http://mamacgroup.com/recipies/api/recipies.php")
+                .setBodyParameter("category", category.id)
+                .asJsonArray()
+                .setCallback(new FutureCallback<JsonArray>() {
+                    @Override
+                    public void onCompleted(Exception e, JsonArray result) {
+                        if (progressDialog!=null)
+                            progressDialog.dismiss();
+                        for (int i=0;i<result.size();i++){
+                            try {
+                                Products products = new Products(result.get(i).getAsJsonObject(),getContext());
+                                productsfrom_api.add(products);
+                            } catch (JSONException e1) {
+                                e1.printStackTrace();
+                            }
+                            productsAdapter.notifyDataSetChanged();
+
+                        }
+                    }
+                });
     }
 
 }

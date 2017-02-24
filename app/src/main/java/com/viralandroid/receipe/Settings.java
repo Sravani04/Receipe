@@ -10,20 +10,19 @@ import android.preference.PreferenceManager;
 
 public class Settings {
 
-    public  static  final String ingredient_name="ingredient_name";
-    public  static  final String ingredient_quantity="ingredient_quantity";
+    public  static  final String cat_id="cat_id";
+    public  static  final String cat_name="cat_name";
 
-    public  static void SetIngredients(Context context, String name, String quantity){
+    public  static void SetCatId(Context context,String id,String cat_name){
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putString(name,ingredient_name);
-        editor.putString(quantity,ingredient_quantity);
-        editor.clear();
+        editor.putString(cat_id,id);
         editor.commit();
     }
-    public  static String GetIngredients(Context context) {
+
+    public  static String GetCatId(Context context) {
         SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(context);
-        return sharedPreferences.getString(ingredient_quantity,ingredient_quantity);
+        return sharedPreferences.getString(cat_id,cat_id + "1");
     }
 
 }

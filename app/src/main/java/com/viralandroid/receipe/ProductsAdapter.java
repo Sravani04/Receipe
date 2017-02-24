@@ -22,19 +22,19 @@ public class ProductsAdapter extends BaseAdapter {
     ArrayList<Integer> mimages;
     ArrayList<String> mtitles;
     ArrayList<String> mtime;
-    ArrayList<Recipes> recipes;
-    public ProductsAdapter(Context context,ArrayList<Recipes> recipes){
+    ArrayList<Products> products;
+    public ProductsAdapter(Context context,ArrayList<Products> products){
         this.context = context;
 //        mimages = images;
 //        mtitles = titles;
 //        mtime   = time;
-        this.recipes = recipes;
+        this.products = products;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return recipes.size();
+        return products.size();
     }
 
     @Override
@@ -54,10 +54,10 @@ public class ProductsAdapter extends BaseAdapter {
         TextView  product_title = (TextView) item_view.findViewById(R.id.product_title);
         TextView  product_time  = (TextView) item_view.findViewById(R.id.product_time);
         //product_image.setImageResource(mimages.get(position));
-        product_title.setText(recipes.get(position).title);
-        product_time.setText(recipes.get(position).preparation_time);
+        product_title.setText(products.get(position).title);
+        product_time.setText(products.get(position).time1);
+        Picasso.with(context).load(products.get(position).images.get(position).image).placeholder(R.drawable.placeholder).into(product_image);
         //product_time.setText(mtime.get(position));
-        Picasso.with(context).load(recipes.get(position).picture).placeholder(R.drawable.gennaros_pasta01).into(product_image);
 
         return item_view;
     }

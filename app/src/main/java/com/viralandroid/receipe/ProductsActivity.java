@@ -85,7 +85,7 @@ public class ProductsActivity extends Activity {
         }
 
 
-        productsAdapter = new ProductsAdapter(this,recipes);
+       // productsAdapter = new ProductsAdapter(this,recipes);
         listView.setAdapter(productsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

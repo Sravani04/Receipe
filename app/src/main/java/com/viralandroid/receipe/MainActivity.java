@@ -58,7 +58,7 @@ public class MainActivity extends FragmentActivity  {
 
 
 
-        mainActivityAdapter = new MainActivityAdapter(this,categories);
+        //mainActivityAdapter = new MainActivityAdapter(this,categories);
         listView.setAdapter(mainActivityAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

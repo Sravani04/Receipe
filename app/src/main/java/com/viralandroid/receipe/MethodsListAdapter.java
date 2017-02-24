@@ -19,18 +19,20 @@ public class MethodsListAdapter extends BaseAdapter {
     ArrayList<String> msteps;
     ArrayList<String> mdescription;
     Recipes recipes;
+    Products products;
 
 
-    public  MethodsListAdapter(Context context,Recipes recipes){
+    public  MethodsListAdapter(Context context,Products products){
         this.context = context;
         //msteps = steps;
         //mdescription = description;
         this.recipes = recipes;
+        this.products = products;
         inflater = LayoutInflater.from(context);
     }
     @Override
     public int getCount() {
-        return recipes.steps.size();
+        return products.methods.size();
     }
 
     @Override
@@ -48,8 +50,8 @@ public class MethodsListAdapter extends BaseAdapter {
         View item_view = inflater.inflate(R.layout.methods_list,null);
         TextView steps = (TextView) item_view.findViewById(R.id.steps);
         TextView description = (TextView) item_view.findViewById(R.id.description);
-        steps.setText(recipes.steps.get(position).step_name);
-        description.setText(recipes.steps.get(position).step_description);
+        steps.setText(products.methods.get(position).method);
+        description.setText(products.methods.get(position).value);
         return item_view;
     }
 }

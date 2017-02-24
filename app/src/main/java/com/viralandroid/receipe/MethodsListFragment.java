@@ -21,6 +21,7 @@ public class MethodsListFragment extends Fragment {
     ArrayList<String> steps;
     ArrayList<String> description;
     Recipes recipes;
+    Products products_obj;
     
 
     @Override
@@ -32,8 +33,8 @@ public class MethodsListFragment extends Fragment {
 
         try {
             Bundle args = getArguments();
-            recipes = (Recipes) args.getSerializable("method");
-            Log.e("method_response",recipes.steps.toString());
+            products_obj = (Products) args.getSerializable("method");
+            Log.e("method_response",products_obj.methods.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,7 +49,7 @@ public class MethodsListFragment extends Fragment {
 
 
 
-        methodsListAdapter = new MethodsListAdapter(getActivity(),recipes);
+        methodsListAdapter = new MethodsListAdapter(getActivity(),products_obj);
         listView.setAdapter(methodsListAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -19,10 +19,12 @@ public class ShoppingCartAdapter extends BaseAdapter {
     ArrayList<String> mspoons;
     ArrayList<String> mitems;
     Recipes recipes;
+    Products products;
 
-    public ShoppingCartAdapter(Context context,Recipes recipes){
+    public ShoppingCartAdapter(Context context,Products products){
         this.context = context;
         this.recipes = recipes;
+        this.products = products;
 //        mspoons = spoons;
 //        mitems  = items;
         inflater = LayoutInflater.from(context);
@@ -30,7 +32,7 @@ public class ShoppingCartAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return recipes.ingredients.size();
+        return products.ingredients.size();
     }
 
     @Override
@@ -48,8 +50,8 @@ public class ShoppingCartAdapter extends BaseAdapter {
         View item_view = inflater.inflate(R.layout.cart_list_items,null);
         TextView recipe_spoons = (TextView) item_view.findViewById(R.id.recipe_spoons);
         TextView recipe_items = (TextView) item_view.findViewById(R.id.recipe_items);
-        recipe_spoons.setText(recipes.ingredients.get(position).ingredient_quantity);
-        recipe_items.setText(recipes.ingredients.get(position).ingredient_name);
+        recipe_spoons.setText(products.ingredients.get(position).value);
+        recipe_items.setText(products.ingredients.get(position).ingredient);
         return item_view;
     }
 

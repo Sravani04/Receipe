@@ -30,6 +30,7 @@ public class ShoppingCartFragment extends Fragment {
     TextView clear_list;
     JSONObject jsonObject;
     JSONArray jsonArray;
+    Products products_obj;
 
 
     @Override
@@ -40,7 +41,7 @@ public class ShoppingCartFragment extends Fragment {
         clear_list = (TextView) view.findViewById(R.id.clear_list);
 
         try {
-            recipes = (Recipes) getArguments().getSerializable("cart");
+            products_obj = (Products) getArguments().getSerializable("cart");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -80,13 +81,13 @@ public class ShoppingCartFragment extends Fragment {
         clear_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("clear",spoons.toString());
-                recipes.ingredients.clear();
+                Log.e("clear",products_obj.ingredients.toString());
+                products_obj.ingredients.clear();
                 shoppingCartAdapter.notifyDataSetChanged();
             }
         });
 
-        shoppingCartAdapter = new ShoppingCartAdapter(getActivity(),recipes);
+        shoppingCartAdapter = new ShoppingCartAdapter(getActivity(),products_obj);
         listView.setAdapter(shoppingCartAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

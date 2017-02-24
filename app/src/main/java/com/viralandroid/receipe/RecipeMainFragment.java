@@ -32,6 +32,8 @@ public class RecipeMainFragment extends Fragment {
     TextView recipe_gluten,recipe_ct,recipe_portions,recipe_calories;
     Categories categories;
     ImageView product_image;
+    Products products_obj;
+    Products image;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -59,22 +61,24 @@ public class RecipeMainFragment extends Fragment {
         product_image = (ImageView) view.findViewById(R.id.product_image);
 
         try {
-            recipes_obj = (Recipes) getArguments().getSerializable("recipe");
+            products_obj = (Products) getArguments().getSerializable("product");
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        recipe_gluten.setText(recipes_obj.gluten);
-        recipe_ct.setText(recipes_obj.cooking_time);
-        recipe_portions.setText(recipes_obj.portions);
-        recipe_calories.setText(recipes_obj.calories);
-        product_title.setText(recipes_obj.title);
-        Picasso.with(getActivity()).load(recipes_obj.picture).placeholder(R.drawable.gennaros_pasta01).into(product_image);
+
+        recipe_gluten.setText(products_obj.price);
+        recipe_ct.setText(products_obj.time1);
+        recipe_calories.setText(products_obj.calories);
+        product_title.setText(products_obj.title);
+        category_title.setText(products_obj.title);
+        recipe_portions.setText(products_obj.time2);
+        Picasso.with(getContext()).load((String) getArguments().getSerializable("image")).placeholder(R.drawable.placeholder).into(product_image);
 
         reset_icons(1);
         RecipeListFragment recipeListFragment = new RecipeListFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("recipe",recipes_obj);
+        bundle.putSerializable("product",products_obj);
         recipeListFragment.setArguments(bundle);
         getFragmentManager().beginTransaction().replace(R.id.recipe_frame,recipeListFragment).commit();
 
@@ -84,7 +88,7 @@ public class RecipeMainFragment extends Fragment {
                 reset_icons(1);
                 RecipeListFragment recipeListFragment = new RecipeListFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("recipe",recipes_obj);
+                bundle.putSerializable("product",products_obj);
                 recipeListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.recipe_frame,recipeListFragment).commit();
             }
@@ -96,7 +100,7 @@ public class RecipeMainFragment extends Fragment {
                 reset_icons(2);
                 IngrediantsListFragment ingrediantsListFragment = new IngrediantsListFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("ingredient",recipes_obj);
+                bundle.putSerializable("ingredient",products_obj);
                 ingrediantsListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.recipe_frame,ingrediantsListFragment).commit();
             }
@@ -108,7 +112,7 @@ public class RecipeMainFragment extends Fragment {
                 reset_icons(3);
                 MethodsListFragment methodsListFragment = new MethodsListFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("method",recipes_obj);
+                bundle.putSerializable("method",products_obj);
                 methodsListFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.recipe_frame,methodsListFragment).commit();
             }
@@ -119,7 +123,7 @@ public class RecipeMainFragment extends Fragment {
             public void onClick(View view) {
                 ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("cart",recipes_obj);
+                bundle.putSerializable("cart",products_obj);
                 shoppingCartFragment.setArguments(bundle);
                 getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).addToBackStack("cart").commit();
             }

@@ -20,13 +20,14 @@ public class RecipeListFragment extends Fragment {
     ArrayList<String> description;
     ArrayList<Recipes> recipes;
     Recipes recipes_obj;
+    Products products_obj;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         final View view = inflater.inflate(R.layout.recipe_page,container,false);
         listView = (ListView) view.findViewById(R.id.recipe_list);
 
         try {
-            recipes_obj = (Recipes) getArguments().getSerializable("recipe");
+            products_obj = (Products) getArguments().getSerializable("product");
 //            Log.e("recipe_response",recipes_obj.description);
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,8 +38,8 @@ public class RecipeListFragment extends Fragment {
 
 //        description.add("Deseed the squash and cut into 8 wedges, then place in a roasting tray and sprinklw over the chilli, drizzle with oil and season. Toss well, spread evenly and roast for 35 to 40 minutes. Remove and cool.");
 //        description.add("Peel and finely drop the onion and");
-
-        description.add(recipes_obj.description);
+       description.add(android.text.Html.fromHtml(products_obj.description).toString());
+        //description.add(products_obj.description);
 
         recipeListAdapter = new RecipeListAdapter(getActivity(),description);
         listView.setAdapter(recipeListAdapter);

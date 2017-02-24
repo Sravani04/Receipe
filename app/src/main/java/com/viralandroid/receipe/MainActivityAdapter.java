@@ -24,17 +24,18 @@ public class MainActivityAdapter extends BaseAdapter {
     ArrayList<String> mnumbers;
     ArrayList<String> mnames;
     ArrayList<Categories> categories;
+    ArrayList<Category> category;
 
-    public MainActivityAdapter(Context context,ArrayList<Categories> categories){
+    public MainActivityAdapter(Context context,ArrayList<Category> category){
         this.context = context;
-        this.categories = categories;
+        this.category = category;
         inflater = LayoutInflater.from(context);
     }
 
 
     @Override
     public int getCount() {
-        return categories.size();
+        return category.size();
     }
 
     @Override
@@ -53,11 +54,11 @@ public class MainActivityAdapter extends BaseAdapter {
         TextView category_count = (TextView) item_view.findViewById(R.id.category_count);
         ImageView category_image = (ImageView) item_view.findViewById(R.id.category_image);
         TextView category_title  = (TextView) item_view.findViewById(R.id.category_title);
-//        category_count.setText(mnumbers.get(position));
+        category_count.setText(category.get(position).count);
 //        category_image.setImageResource(mimages.get(position));
 //        category_title.setText(mnames.get(position));
-       category_title.setText(categories.get(position).name);
-       Picasso.with(context).load(categories.get(position).icon).placeholder(R.drawable.chocolate_caramel01).into(category_image);
+       category_title.setText(category.get(position).title);
+      Picasso.with(context).load(category.get(position).image).placeholder(R.drawable.placeholder).into(category_image);
         return item_view;
     }
 }

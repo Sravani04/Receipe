@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -31,17 +30,18 @@ public class ExampleMainActivity extends FragmentActivity implements
     ArrayList<Categories> categories;
     JSONObject jsonObject;
     JSONArray jsonArray;
+    Products products;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.example_activity);
 
-        try {
-            jsonObject = new JSONObject(getIntent().getStringExtra("json"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            jsonObject = new JSONObject(getIntent().getStringExtra("products_obj"));
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
 //        Bundle bundle = new Bundle();
 //        bundle.putSerializable("response",jsonObject.toString());
@@ -55,11 +55,11 @@ public class ExampleMainActivity extends FragmentActivity implements
 
         // Set up the drawer.
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationDrawerFragment.update_navigation(jsonObject);
+        mNavigationDrawerFragment.update_navigation();
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer,mDrawerLayout);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.container,HomeFragment.newInstance(jsonObject)).commit();
+        fragmentManager.beginTransaction().replace(R.id.container,HomeFragment.newInstance()).commit();
 
 
     }

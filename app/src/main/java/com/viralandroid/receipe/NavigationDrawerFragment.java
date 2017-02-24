@@ -5,6 +5,7 @@ package com.viralandroid.receipe;
  */
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -23,8 +24,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.gson.JsonArray;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
+
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -74,6 +78,7 @@ public class NavigationDrawerFragment extends Fragment {
     ArrayList<Categories> categories;
     JSONObject jsonObject;
     JSONArray jsonArray;
+    ArrayList<Category> categoriesfrom_api;
 
     public NavigationDrawerFragment() {
 
@@ -120,35 +125,63 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
 
-    public void update_navigation(JSONObject jsonObjectres){
-
-        jsonObject = jsonObjectres;
+    public void update_navigation(){
 
         categories= new ArrayList<>();
-        try {
-            jsonArray = jsonObject.getJSONArray("Category");
-            for (int i =0;i<jsonObject.getJSONArray("Category").length();i++) {
-                categories.add(new Categories(jsonArray.getJSONObject(i)));
-            }
-            JSONObject temp = new JSONObject();
-            temp.put("name","My Favorites");
-            temp.put("icon",R.drawable.favorites);
-            categories.add(new Categories(temp));
+        categoriesfrom_api = new ArrayList<>();
+//        try {
+//            jsonArray = jsonObject.getJSONArray("Category");
+//            for (int i =0;i<jsonObject.getJSONArray("Category").length();i++) {
+//                categories.add(new Categories(jsonArray.getJSONObject(i)));
+//            }
+//            JSONObject temp = new JSONObject();
+//            temp.put("name","My Favorites");
+//            temp.put("icon",R.drawable.favorites);
+//            categories.add(new Categories(temp));
+//
+//            JSONObject temp1 = new JSONObject();
+//            temp1.put("name","Shopping List");
+//            temp1.put("icon",R.drawable.shopping);
+//            categories.add(new Categories(temp1));
+//
+//            JSONObject temp2 = new JSONObject();
+//            temp2.put("name","About Us");
+//            temp2.put("icon",R.drawable.about);
+//            categories.add(new Categories(temp2));
+//
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
-            JSONObject temp1 = new JSONObject();
-            temp1.put("name","Shopping List");
-            temp1.put("icon",R.drawable.shopping);
-            categories.add(new Categories(temp1));
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("loading categories..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+        Ion.with(getContext())
+                .load("http://mamacgroup.com/recipies/api/category.php")
+                .asJsonArray()
+                .setCallback(new FutureCallback<JsonArray>() {
+                    @Override
+                    public void onCompleted(Exception e, JsonArray result) {
+                        for (int i=0;i<result.size();i++){
+                            if (progressDialog!=null)
+                                progressDialog.dismiss();
+                            try {
+                                Category category = new Category(result.get(i).getAsJsonObject(),getContext());
+                                categoriesfrom_api.add(category);
 
-            JSONObject temp2 = new JSONObject();
-            temp2.put("name","About Us");
-            temp2.put("icon",R.drawable.about);
-            categories.add(new Categories(temp2));
+                            } catch (Exception e1) {
+                                e1.printStackTrace();
+                            }
+
+                            mMyDrawerAdapter.notifyDataSetChanged();
+
+                        }
+                    }
+                });
 
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
         images = new int[] { R.drawable.fruit_recipe, R.drawable.beef_recipe,
@@ -157,7 +190,7 @@ public class NavigationDrawerFragment extends Fragment {
 
         selectedposition = new int[] { mCurrentSelectedPosition };
 
-        mMyDrawerAdapter = new MyDrawerAdapter(getActivity(), categories,images,
+        mMyDrawerAdapter = new MyDrawerAdapter(getActivity(), categoriesfrom_api,images,
                 selectedposition);
         mDrawerListView.setAdapter(mMyDrawerAdapter);
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -182,12 +215,7 @@ public class NavigationDrawerFragment extends Fragment {
                     selectItem(i);
                     ProductsFragment productsFragment = new ProductsFragment();
                     Bundle bundle = new Bundle();
-                    try {
-                        bundle.putString("recipe",jsonArray.getJSONObject(i).getJSONArray("RecipeInfo").toString());
-                        bundle.putSerializable("category",categories.get(i));
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    bundle.putSerializable("category_obj",categoriesfrom_api.get(i));
                     productsFragment.setArguments(bundle);
                     getFragmentManager().beginTransaction().replace(R.id.container,productsFragment).addToBackStack("category").commit();
                 }

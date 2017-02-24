@@ -21,6 +21,7 @@ public class IngrediantsListFragment extends Fragment {
     ArrayList<String> spoons;
     ArrayList<String> items;
     Recipes recipes_obj;
+    Products products_obj;
     private int i;
 
     @Override
@@ -30,8 +31,8 @@ public class IngrediantsListFragment extends Fragment {
 
         try {
             Bundle args = getArguments();
-            recipes_obj = (Recipes) args.getSerializable("ingredient");
-            Log.e("response", recipes_obj.ingredients.toString());
+            products_obj = (Products) args.getSerializable("ingredient");
+            Log.e("response", products_obj.ingredients.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,7 +62,7 @@ public class IngrediantsListFragment extends Fragment {
 //        items.add("free-range egg");
 
 
-        ingrediantsListAdapter = new IngrediantsListAdapter(getActivity(),recipes_obj);
+        ingrediantsListAdapter = new IngrediantsListAdapter(getActivity(),products_obj);
         listView.setAdapter(ingrediantsListAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
