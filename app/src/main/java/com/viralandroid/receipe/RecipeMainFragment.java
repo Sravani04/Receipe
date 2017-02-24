@@ -142,8 +142,8 @@ public class RecipeMainFragment extends Fragment {
             public void onClick(View view) {
                 Intent i=new Intent(Intent.ACTION_SEND);
                 i.setType("text/plain");
-                i.putExtra(Intent.EXTRA_SUBJECT,recipes_obj.title);
-                i.putExtra(Intent.EXTRA_TEXT, recipes_obj.description);
+                i.putExtra(Intent.EXTRA_SUBJECT,products_obj.title);
+                i.putExtra(Intent.EXTRA_TEXT,android.text.Html.fromHtml(products_obj.description).toString());
                 getActivity().startActivity(Intent.createChooser(i,"Share via"));
             }
         });
