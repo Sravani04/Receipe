@@ -118,8 +118,8 @@ public class ProductsFragment extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.container,recipeMainFragment).addToBackStack("recipe").commit();
             }
         });
-       get_recipes_multi();
-//        get_products();
+
+    get_products();
         return view;
     }
 
@@ -151,32 +151,6 @@ public class ProductsFragment extends Fragment {
                 });
     }
 
-    public void get_recipes_multi(){
-        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("please wait..");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-        Ion.with(getContext())
-                .load("http://mamacgroup.com/recipies/api/recipies_multi.php")
-                .setBodyParameter("id",category.id)
-                .asJsonArray()
-                .setCallback(new FutureCallback<JsonArray>() {
-                    @Override
-                    public void onCompleted(Exception e, JsonArray result) {
-                        if (progressDialog!=null)
-                            progressDialog.dismiss();
-                        for (int i=0;i<result.size();i++){
-                            Products products = null;
-                            try {
-                                products = new Products(result.get(i).getAsJsonObject(),getContext());
-                            } catch (JSONException e1) {
-                                e1.printStackTrace();
-                            }
-                            productsfrom_api.add(products);
-                        }
-                        productsAdapter.notifyDataSetChanged();
-                    }
-                });
-    }
+
 
 }
