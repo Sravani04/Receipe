@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 
 public class Products  implements Serializable{
-    public String id,title,title_ar,price,time1,time2,calories,description,description_ar;
+    public String id,title,title_ar,price,time1,time2,calories,description,description_ar,script;
 
     public ArrayList<Images> images;
     public ArrayList<Ingredients> ingredients;
@@ -30,6 +30,7 @@ public class Products  implements Serializable{
         calories = jsonObject.get("calories").getAsString();
         description = jsonObject.get("description").getAsString();
         description_ar = jsonObject.get("description_ar").getAsString();
+        script = jsonObject.get("script").getAsString();
 
         images = new ArrayList<>();
         for(int i=0;i<jsonObject.get("images").getAsJsonArray().size();i++){

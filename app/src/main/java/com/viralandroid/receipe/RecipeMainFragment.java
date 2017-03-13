@@ -1,5 +1,7 @@
 package com.viralandroid.receipe;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,6 +36,7 @@ public class RecipeMainFragment extends Fragment {
     ImageView product_image;
     Products products_obj;
     Products image;
+    ImageView recipe_video;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -59,6 +62,7 @@ public class RecipeMainFragment extends Fragment {
         recipe_portions = (TextView) view.findViewById(R.id.recipe_portions);
         recipe_calories = (TextView) view.findViewById(R.id.recipe_calories);
         product_image = (ImageView) view.findViewById(R.id.product_image);
+        recipe_video = (ImageView) view.findViewById(R.id.recipe_video);
 
         try {
             products_obj = (Products) getArguments().getSerializable("product");
@@ -74,6 +78,13 @@ public class RecipeMainFragment extends Fragment {
         category_title.setText(products_obj.title);
         recipe_portions.setText(products_obj.time2);
         Picasso.with(getContext()).load((String) getArguments().getSerializable("image")).placeholder(R.drawable.placeholder).into(product_image);
+        recipe_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recipe_like.setImageResource(R.drawable.fav_added2x);
+            }
+        });
+
 
         reset_icons(1);
         RecipeListFragment recipeListFragment = new RecipeListFragment();
@@ -121,11 +132,7 @@ public class RecipeMainFragment extends Fragment {
         recipe_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("cart",products_obj);
-                shoppingCartFragment.setArguments(bundle);
-                getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).addToBackStack("cart").commit();
+             get_favourites();
             }
         });
 
@@ -145,6 +152,15 @@ public class RecipeMainFragment extends Fragment {
                 i.putExtra(Intent.EXTRA_SUBJECT,products_obj.title);
                 i.putExtra(Intent.EXTRA_TEXT,android.text.Html.fromHtml(products_obj.description).toString());
                 getActivity().startActivity(Intent.createChooser(i,"Share via"));
+            }
+        });
+
+        recipe_video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),YoutubePlayer.class);
+                intent.putExtra("video",products_obj.script);
+                startActivity(intent);
             }
         });
 
@@ -176,6 +192,31 @@ public class RecipeMainFragment extends Fragment {
                 break;
         }
 
+    }
+
+    public void get_favourites(){
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(getContext());
+        builder2.setMessage("Do you want to add ingredients to favourites?");
+        builder2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ShoppingCartFragment shoppingCartFragment = new ShoppingCartFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("cart",products_obj);
+                shoppingCartFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction().replace(R.id.container,shoppingCartFragment).addToBackStack("cart").commit();
+            }
+        });
+        builder2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+//        onViewHolderBound();
+                //Toast.makeText(getContext(), "U Clicked Cancel ", Toast.LENGTH_LONG).show();
+            }
+
+        });
+
+        builder2.show();
     }
 
 
