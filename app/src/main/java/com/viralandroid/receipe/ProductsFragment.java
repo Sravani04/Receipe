@@ -152,6 +152,10 @@ public class ProductsFragment extends Fragment {
     }
 
     public void get_recipes_multi(){
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("please wait..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         Ion.with(getContext())
                 .load("http://mamacgroup.com/recipies/api/recipies_multi.php")
                 .setBodyParameter("id",category.id)
@@ -159,6 +163,8 @@ public class ProductsFragment extends Fragment {
                 .setCallback(new FutureCallback<JsonArray>() {
                     @Override
                     public void onCompleted(Exception e, JsonArray result) {
+                        if (progressDialog!=null)
+                            progressDialog.dismiss();
                         for (int i=0;i<result.size();i++){
                             Products products = null;
                             try {
