@@ -118,7 +118,8 @@ public class ProductsFragment extends Fragment {
                 getFragmentManager().beginTransaction().replace(R.id.container,recipeMainFragment).addToBackStack("recipe").commit();
             }
         });
-        get_products();
+       get_recipes_multi();
+//        get_products();
         return view;
     }
 
