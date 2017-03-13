@@ -25,7 +25,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
@@ -165,27 +164,17 @@ public class NavigationDrawerFragment extends Fragment {
                 .setCallback(new FutureCallback<JsonArray>() {
                     @Override
                     public void onCompleted(Exception e, JsonArray result) {
-                        for (int i=0;i<result.size();i++){
-                            if (progressDialog!=null)
-                                progressDialog.dismiss();
-                            try {
-                                Category category = new Category(result.get(i).getAsJsonObject(), getContext());
-                                categoriesfrom_api.add(category);
-
-                                JsonObject temp = result.get(i).getAsJsonObject();
-                                temp.addProperty("title","My Favorites");
-                                temp.addProperty("image",R.drawable.favorites);
-                                categoriesfrom_api.add(new Category(temp,getContext()));
-
-
-
-                            }catch (Exception e1) {
-                                e1.printStackTrace();
+                            for (int i=0;i<result.size();i++) {
+                                if (progressDialog != null)
+                                    progressDialog.dismiss();
+                                try {
+                                    Category category = new Category(result.get(i).getAsJsonObject(), getContext());
+                                    categoriesfrom_api.add(category);
+                                } catch (Exception e1) {
+                                    e1.printStackTrace();
+                                }
+                                mMyDrawerAdapter.notifyDataSetChanged();
                             }
-
-                            mMyDrawerAdapter.notifyDataSetChanged();
-
-                        }
                     }
                 });
 
