@@ -226,7 +226,10 @@ public class NavigationDrawerFragment extends Fragment {
                 mMyDrawerAdapter.notifyDataSetChanged();
                 if(i==6){
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).addToBackStack("favorites").commit();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("category_obj",categoriesfrom_api.get(i));
+                    myFavoritesFragment.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).addToBackStack("category").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 }else if (i==7){
                     CartFragment cartFragment = new CartFragment();

@@ -55,8 +55,6 @@ public class Products  implements Serializable{
 
     }
 
-
-
     public class Images implements Serializable {
 
         public String image,thumb;
@@ -92,4 +90,49 @@ public class Products  implements Serializable{
             value_ar = jsonObject.get("value_ar").getAsString();
         }
     }
+
+    public Products(){
+
+    }
+
+    int _id;
+    public Products(int id, String title, String script) {
+        this._id = id;
+        this.title = title;
+        this.script = script;
+    }
+
+    public Products(String title, String script){
+        this.title = title;
+        this.script = script;
+    }
+
+
+    public int getID(){
+        return this._id;
+    }
+
+    public void setID(int id){
+        this._id = id;
+    }
+
+    public String getTitle(){
+        return this.title;
+    }
+
+    // setting title
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    // getting script
+    public String getScript(){
+        return this.script;
+    }
+
+    // setting script
+    public void setScript(String script){
+        this.script = script;
+    }
+
 }

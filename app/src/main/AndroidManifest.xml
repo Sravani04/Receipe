@@ -18,8 +18,7 @@
         <activity android:name=".ProductsActivity"></activity>
         <activity android:name=".RecipeFragment"></activity>
         <activity android:name=".CartFragment"></activity>
-        <activity android:name=".ExampleMainActivity">
-        </activity>
+        <activity android:name=".ExampleMainActivity"></activity>
         <activity android:name=".YoutubePlayer"></activity>
     </application>
 

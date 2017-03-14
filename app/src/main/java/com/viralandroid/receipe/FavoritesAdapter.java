@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,19 +15,24 @@ import java.util.ArrayList;
  */
 
 public class FavoritesAdapter extends BaseAdapter {
-    Context context;
     LayoutInflater inflater;
-    ArrayList<String> mnames;
-
-    protected FavoritesAdapter(Context context,ArrayList<String> names){
+    Context context;
+    ArrayList<Integer> mimages;
+    ArrayList<String> mtitles;
+    ArrayList<String> mtime;
+    ArrayList<Products> products;
+    public FavoritesAdapter(Context context,ArrayList<Products> products){
         this.context = context;
+//        mimages = images;
+//        mtitles = titles;
+//        mtime   = time;
+        this.products = products;
         inflater = LayoutInflater.from(context);
-        mnames = names;
     }
 
     @Override
     public int getCount() {
-        return mnames.size();
+        return products.size();
     }
 
     @Override
@@ -40,10 +46,17 @@ public class FavoritesAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        View item_view = inflater.inflate(R.layout.favorites_list,null);
-        TextView item_title = (TextView) item_view.findViewById(R.id.item_name);
-        item_title.setText(mnames.get(i));
+    public View getView(int position, View view, ViewGroup viewGroup) {
+        View item_view = inflater.inflate(R.layout.products,null);
+        ImageView product_image = (ImageView) item_view.findViewById(R.id.product_image);
+        TextView  product_title = (TextView) item_view.findViewById(R.id.product_title);
+        TextView  product_time  = (TextView) item_view.findViewById(R.id.product_time);
+        //product_image.setImageResource(mimages.get(position));
+        product_title.setText(products.get(position).title);
+        product_time.setText(products.get(position).time1);
+//        Picasso.with(context).load(products.get(position).images.get(position).image).placeholder(R.drawable.placeholder).into(product_image);
+        //product_time.setText(mtime.get(position));
+
         return item_view;
     }
 }

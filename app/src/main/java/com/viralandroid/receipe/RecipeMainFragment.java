@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 /**
  * Created by T on 22-02-2017.
@@ -77,13 +76,35 @@ public class RecipeMainFragment extends Fragment {
         product_title.setText(products_obj.title);
         category_title.setText(products_obj.title);
         recipe_portions.setText(products_obj.time2);
-        Picasso.with(getContext()).load((String) getArguments().getSerializable("image")).placeholder(R.drawable.placeholder).into(product_image);
+
+        //Picasso.with(getContext()).load((String) getArguments().getSerializable("image")).placeholder(R.drawable.placeholder).into(product_image);
         recipe_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recipe_like.setImageResource(R.drawable.fav_added2x);
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                if(!db.getFavorites(products_obj.id)) {
+                    Log.e("liked",products_obj.id);
+                    db.addFavorites(products_obj);
+                    recipe_like.setImageResource(R.drawable.fav_added2x);
+                }
+                else {
+                    db.deleteFavorites(products_obj);
+                    Log.e("delete",products_obj.id);
+                    recipe_like.setImageResource(R.drawable.fav);
+                }
+
+//                recipe_like.setImageResource(R.drawable.fav_added2x);
             }
         });
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        if(db.getFavorites(products_obj.id))
+            recipe_like.setImageResource(R.drawable.fav_added2x);
+        else
+            recipe_like.setImageResource(R.drawable.fav);
+
+
+
 
 
         reset_icons(1);
