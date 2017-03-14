@@ -15,6 +15,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
@@ -168,6 +170,7 @@ public class NavigationDrawerFragment extends Fragment {
                                 if (progressDialog != null)
                                     progressDialog.dismiss();
                                 try {
+                                    Log.e("category",result.get(i).getAsJsonObject().toString());
                                     Category category = new Category(result.get(i).getAsJsonObject(), getContext());
                                     categoriesfrom_api.add(category);
                                 } catch (Exception e1) {
@@ -175,6 +178,31 @@ public class NavigationDrawerFragment extends Fragment {
                                 }
                                 mMyDrawerAdapter.notifyDataSetChanged();
                             }
+
+                        JsonObject jsonObj = new JsonObject();
+                        jsonObj.addProperty("id","7");
+                        jsonObj.addProperty("title","My Favorites");
+                        jsonObj.addProperty("title_ar","My Favorites");
+                        jsonObj.addProperty("image",R.drawable.favorites);
+                        jsonObj.addProperty("count","0");
+                        categoriesfrom_api.add(new Category(jsonObj,getContext()));
+
+                        JsonObject temp = new JsonObject();
+                        temp.addProperty("id","8");
+                        temp.addProperty("title","Shopping List");
+                        temp.addProperty("title_ar","Shopping List");
+                        temp.addProperty("image",R.drawable.shopping);
+                        temp.addProperty("count","0");
+                        categoriesfrom_api.add(new Category(temp,getContext()));
+
+                        JsonObject temp1 = new JsonObject();
+                        temp1.addProperty("id","9");
+                        temp1.addProperty("title","About Us");
+                        temp1.addProperty("title_ar","About Us");
+                        temp1.addProperty("image",R.drawable.about);
+                        temp1.addProperty("count","0");
+                        categoriesfrom_api.add(new Category(temp1,getContext()));
+
                     }
                 });
 
@@ -195,11 +223,11 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
-                if(i==8){
+                if(i==7){
                     CartFragment cartFragment = new CartFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-                }else if (i==7){
+                }else if (i==8){
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).addToBackStack("favorites").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
