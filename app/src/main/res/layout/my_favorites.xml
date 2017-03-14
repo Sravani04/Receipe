@@ -28,7 +28,7 @@
                 android:text="My Favorites"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/textView9"
+                android:id="@+id/category_title"
                 android:gravity="center_vertical"
                 android:textSize="18sp"
                 android:textColor="#ffa500"
@@ -38,6 +38,20 @@
                 android:textStyle="normal|bold" />
 
         </LinearLayout>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"></LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fav_list" />
 
 </LinearLayout>
