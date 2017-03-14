@@ -179,6 +179,7 @@ public class NavigationDrawerFragment extends Fragment {
                                 mMyDrawerAdapter.notifyDataSetChanged();
                             }
 
+
                         JsonObject jsonObj = new JsonObject();
                         jsonObj.addProperty("id","7");
                         jsonObj.addProperty("title","My Favorites");
@@ -223,17 +224,17 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
-                if(i==8){
-                    CartFragment cartFragment = new CartFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
-                }else if (i==7){
+                if(i==6){
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).addToBackStack("favorites").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-                }else if (i==9){
+                }else if (i==7){
+                    CartFragment cartFragment = new CartFragment();
+                    getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                }else if (i==8) {
                     AboutUsFragment aboutUsFragment = new AboutUsFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container,aboutUsFragment).addToBackStack("about").commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, aboutUsFragment).addToBackStack("about").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 }
                 else{
