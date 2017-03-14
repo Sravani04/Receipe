@@ -223,11 +223,11 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
-                if(i==7){
+                if(i==8){
                     CartFragment cartFragment = new CartFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-                }else if (i==8){
+                }else if (i==7){
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).addToBackStack("favorites").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
