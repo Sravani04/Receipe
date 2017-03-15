@@ -111,7 +111,7 @@ public class ProductsFragment extends Fragment {
                 bundle.putSerializable("time2",productsfrom_api.get(i).time2);
                 bundle.putSerializable("price",productsfrom_api.get(i).price);
                 bundle.putSerializable("calories",productsfrom_api.get(i).calories);
-                bundle.putSerializable("image",productsfrom_api.get(i).images.get(i).image);
+                bundle.putSerializable("image",productsfrom_api.get(i).images.get(0).image);
                 bundle.putSerializable("title",productsfrom_api.get(i).title);
                 bundle.putSerializable("id",productsfrom_api.get(i).id);
                 recipeMainFragment.setArguments(bundle);

@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MyFavoritesFragment extends Fragment {
     ImageView back_btn;
-    FavoritesAdapter favoritesAdapter;
+    ProductsAdapter productsAdapter;
     ListView listView;
     ArrayList<Products> productsfrom_api;
     ArrayList<String> names;
@@ -68,8 +68,8 @@ public class MyFavoritesFragment extends Fragment {
         category = (Category) getArguments().getSerializable("category_obj");
         category_name.setText(category.title);
 
-        favoritesAdapter = new FavoritesAdapter(getActivity(),productsfrom_api);
-        listView.setAdapter(favoritesAdapter);
+        productsAdapter = new ProductsAdapter(getActivity(),productsfrom_api);
+        listView.setAdapter(productsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -79,7 +79,7 @@ public class MyFavoritesFragment extends Fragment {
                 bundle.putSerializable("time2",productsfrom_api.get(i).time2);
                 bundle.putSerializable("price",productsfrom_api.get(i).price);
                 bundle.putSerializable("calories",productsfrom_api.get(i).calories);
-                //bundle.putSerializable("image",productsfrom_api.get(i).images.get(i).image);
+                bundle.putSerializable("image",productsfrom_api.get(i).images.get(0).image);
                 bundle.putSerializable("title",productsfrom_api.get(i).title);
                 bundle.putSerializable("id",productsfrom_api.get(i).id);
                 recipeMainFragment.setArguments(bundle);
@@ -122,7 +122,7 @@ public class MyFavoritesFragment extends Fragment {
                                 } catch (JSONException e1) {
                                     e1.printStackTrace();
                                 }
-                                favoritesAdapter.notifyDataSetChanged();
+                                productsAdapter.notifyDataSetChanged();
 
                             }
                         }

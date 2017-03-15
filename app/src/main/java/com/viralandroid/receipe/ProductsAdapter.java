@@ -56,7 +56,7 @@ public class ProductsAdapter extends BaseAdapter {
         //product_image.setImageResource(mimages.get(position));
         product_title.setText(products.get(position).title);
         product_time.setText(products.get(position).time1);
-        Picasso.with(context).load(products.get(position).images.get(position).image).placeholder(R.drawable.placeholder).into(product_image);
+        Picasso.with(context).load(products.get(position).images.get(0).image).placeholder(R.drawable.placeholder).into(product_image);
         //product_time.setText(mtime.get(position));
 
         return item_view;

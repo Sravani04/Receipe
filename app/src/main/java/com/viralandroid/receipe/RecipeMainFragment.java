@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by T on 22-02-2017.
  */
@@ -76,8 +78,7 @@ public class RecipeMainFragment extends Fragment {
         product_title.setText(products_obj.title);
         category_title.setText(products_obj.title);
         recipe_portions.setText(products_obj.time2);
-
-        //Picasso.with(getContext()).load((String) getArguments().getSerializable("image")).placeholder(R.drawable.placeholder).into(product_image);
+        Picasso.with(getContext()).load((String) getArguments().getSerializable("image")).placeholder(R.drawable.placeholder).into(product_image);
         recipe_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
