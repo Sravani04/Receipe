@@ -23,6 +23,7 @@
         android:gravity="left|center_vertical"
         android:text="TextView"
         android:layout_margin="10dp"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        android:textColor="#ffffff" />
 
 </LinearLayout>

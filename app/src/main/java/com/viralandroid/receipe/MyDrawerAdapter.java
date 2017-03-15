@@ -5,7 +5,6 @@ package com.viralandroid.receipe;
  */
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,13 +93,13 @@ public class MyDrawerAdapter extends BaseAdapter {
 
 
         //Highlight the selected list item
-        if (position == selectedposition[0]) {
-            convertView.setBackgroundColor(Color.WHITE);
-            mViewHolder.tvTitle.setTextColor(Color.BLUE);
-        } else {
-            convertView.setBackgroundColor(Color.TRANSPARENT);
-            mViewHolder.tvTitle.setTextColor(Color.WHITE);
-        }
+//        if (position == selectedposition[0]) {
+//            convertView.setBackgroundColor(Color.WHITE);
+//            mViewHolder.tvTitle.setTextColor(Color.BLUE);
+//        } else {
+//            convertView.setBackgroundColor(Color.TRANSPARENT);
+//            mViewHolder.tvTitle.setTextColor(Color.WHITE);
+//        }
 
         return convertView;
     }
