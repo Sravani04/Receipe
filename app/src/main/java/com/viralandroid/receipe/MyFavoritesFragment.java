@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.koushikdutta.async.future.FutureCallback;
@@ -87,7 +88,7 @@ public class MyFavoritesFragment extends Fragment {
             }
         });
         if(fav_ids.equals("0")){
-
+            Toast.makeText(getActivity(),"something went wrong..",Toast.LENGTH_SHORT).show();
         }else{
             get_recipes_multi();
         }
