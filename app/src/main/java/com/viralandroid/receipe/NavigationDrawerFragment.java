@@ -184,7 +184,7 @@ public class NavigationDrawerFragment extends Fragment {
                         jsonObj.addProperty("id","7");
                         jsonObj.addProperty("title","My Favorites");
                         jsonObj.addProperty("title_ar","My Favorites");
-                        jsonObj.addProperty("image",R.drawable.favorites);
+                        jsonObj.addProperty("image","http://mamacgroup.com/recipies/uploads/category/101489559793.png");
                         jsonObj.addProperty("count","0");
                         categoriesfrom_api.add(new Category(jsonObj,getContext()));
 
@@ -192,7 +192,7 @@ public class NavigationDrawerFragment extends Fragment {
                         temp.addProperty("id","8");
                         temp.addProperty("title","Shopping List");
                         temp.addProperty("title_ar","Shopping List");
-                        temp.addProperty("image",R.drawable.shopping);
+                        temp.addProperty("image","http://mamacgroup.com/recipies/uploads/category/81489559514.png");
                         temp.addProperty("count","0");
                         categoriesfrom_api.add(new Category(temp,getContext()));
 
@@ -200,7 +200,7 @@ public class NavigationDrawerFragment extends Fragment {
                         temp1.addProperty("id","9");
                         temp1.addProperty("title","About Us");
                         temp1.addProperty("title_ar","About Us");
-                        temp1.addProperty("image",R.drawable.about);
+                        temp1.addProperty("image","http://mamacgroup.com/recipies/uploads/category/91489559668.png");
                         temp1.addProperty("count","0");
                         categoriesfrom_api.add(new Category(temp1,getContext()));
 
