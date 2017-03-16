@@ -1,5 +1,6 @@
 package com.viralandroid.receipe;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -22,12 +23,14 @@ import java.util.ArrayList;
 public class AboutUsFragment extends Fragment {
     ImageView back_btn;
     ArrayList<Settings> settingsfrom_api;
-    TextView about;
+    TextView about,email,contact;
     @Override
     public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         final View view = inflater.inflate(R.layout.about_us,container,false);
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
         about = (TextView) view.findViewById(R.id.about);
+        email = (TextView) view.findViewById(R.id.email);
+        contact = (TextView) view.findViewById(R.id.contact);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,16 +44,24 @@ public class AboutUsFragment extends Fragment {
     }
 
     public void get_aboutus(){
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("please wait..");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
         Ion.with(getContext())
                 .load("http://mamacgroup.com/recipies/api/settings.php")
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>() {
                     @Override
                     public void onCompleted(Exception e, JsonObject result) {
+                        if (progressDialog!=null)
+                            progressDialog.dismiss();
                         try {
                             Log.e("about_response",result.toString());
-                            Log.e("logo",result.get("logo").toString());
-                            about.setText(result.get("about").getAsString());
+                            Log.e("about",result.get("about").toString());
+                            about.setText(android.text.Html.fromHtml(result.get("about").getAsString()));
+                            email.setText(result.get("email").getAsString());
+                            contact.setText(android.text.Html.fromHtml(result.get("contact").getAsString()));
                         } catch(Exception ex){
                             ex.printStackTrace();
                         }
