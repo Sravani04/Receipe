@@ -161,7 +161,7 @@ NavigationDrawerCallbacks mCallbacks;
         progressDialog.setCancelable(false);
         progressDialog.show();
         Ion.with(getContext())
-                .load("http://mamacgroup.com/recipies/api/category.php")
+                .load(Session.SERVER_URL+"category.php")
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {
                     @Override

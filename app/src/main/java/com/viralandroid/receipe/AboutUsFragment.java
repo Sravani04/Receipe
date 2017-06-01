@@ -46,7 +46,7 @@ public class AboutUsFragment extends Fragment {
         progressDialog.setCancelable(false);
         progressDialog.show();
         Ion.with(getContext())
-                .load("http://mamacgroup.com/recipies/api/settings.php")
+                .load(Session.SERVER_URL+"settings.php")
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>() {
                     @Override

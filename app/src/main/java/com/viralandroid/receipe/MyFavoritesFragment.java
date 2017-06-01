@@ -104,7 +104,7 @@ public class MyFavoritesFragment extends Fragment {
         progressDialog.show();
         Log.e("id",fav_ids);
         Ion.with(getContext())
-                .load("http://mamacgroup.com/recipies/api/recipies_multi.php")
+                .load(Session.SERVER_URL+"recipies_multi.php")
                 .setBodyParameter("id",fav_ids)
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {

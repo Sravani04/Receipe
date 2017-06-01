@@ -161,7 +161,7 @@ public class NavigationDrawerFragment extends Fragment {
         progressDialog.setCancelable(false);
         progressDialog.show();
         Ion.with(getContext())
-                .load("http://mamacgroup.com/recipies/api/category.php")
+                .load(Session.SERVER_URL+"category.php")
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {
                     @Override
@@ -181,7 +181,7 @@ public class NavigationDrawerFragment extends Fragment {
 
 
                         JsonObject jsonObj = new JsonObject();
-                        jsonObj.addProperty("id","7");
+                        jsonObj.addProperty("id","8");
                         jsonObj.addProperty("title","My Favorites");
                         jsonObj.addProperty("title_ar","My Favorites");
                         jsonObj.addProperty("image","http://mamacgroup.com/recipies/uploads/category/101489559793.png");
@@ -224,7 +224,7 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
-                if(i==6) {
+                if(i==8) {
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("category_obj", categoriesfrom_api.get(i));
@@ -237,7 +237,7 @@ public class NavigationDrawerFragment extends Fragment {
 //                    getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
 //                    mDrawerLayout.closeDrawer(GravityCompat.START);
 //                }
-               else if (i==8) {
+               else if (i==9) {
                     AboutUsFragment aboutUsFragment = new AboutUsFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container, aboutUsFragment).addToBackStack("about").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
