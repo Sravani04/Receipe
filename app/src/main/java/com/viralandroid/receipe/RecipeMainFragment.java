@@ -43,7 +43,7 @@ public class RecipeMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         final View view = inflater.inflate(R.layout.recipe_fragment,container,false);
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
-        recipe_cart = (ImageView) view.findViewById(R.id.recipe_cart);
+        //recipe_cart = (ImageView) view.findViewById(R.id.recipe_cart);
         recipe_frame = (FrameLayout) view.findViewById(R.id.recipe_frame);
         recipes = (LinearLayout) view.findViewById(R.id.recipes);
         ingrediants = (LinearLayout) view.findViewById(R.id.ingrediants);
@@ -151,12 +151,12 @@ public class RecipeMainFragment extends Fragment {
             }
         });
 
-        recipe_cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-             get_favourites();
-            }
-        });
+//        recipe_cart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//             get_favourites();
+//            }
+//        });
 
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override

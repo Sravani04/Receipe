@@ -8,7 +8,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="45dp">
+        android:layout_height="45dp"
+        android:background="#f2ea2f">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -22,7 +23,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/back_btn"
                 android:src="@drawable/back_arrow"
-                android:tint="#f2ea2f"
+                android:tint="@color/themeColor"
                 android:padding="15dp"
                 android:adjustViewBounds="true" />
 
@@ -33,7 +34,7 @@
                 android:id="@+id/textView9"
                 android:gravity="center_vertical"
                 android:textSize="18sp"
-                android:textColor="#f2ea2f"
+                android:textColor="@color/themeColor"
                 android:layout_marginLeft="6dp"
                 android:layout_weight="1"
                 android:layout_marginTop="4dp"

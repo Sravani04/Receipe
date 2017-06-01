@@ -188,13 +188,13 @@ public class NavigationDrawerFragment extends Fragment {
                         jsonObj.addProperty("count","0");
                         categoriesfrom_api.add(new Category(jsonObj,getContext()));
 
-                        JsonObject temp = new JsonObject();
-                        temp.addProperty("id","8");
-                        temp.addProperty("title","Shopping List");
-                        temp.addProperty("title_ar","Shopping List");
-                        temp.addProperty("image","http://mamacgroup.com/recipies/uploads/category/81489559514.png");
-                        temp.addProperty("count","0");
-                        categoriesfrom_api.add(new Category(temp,getContext()));
+//                        JsonObject temp = new JsonObject();
+//                        temp.addProperty("id","8");
+//                        temp.addProperty("title","Shopping List");
+//                        temp.addProperty("title_ar","Shopping List");
+//                        temp.addProperty("image","http://mamacgroup.com/recipies/uploads/category/81489559514.png");
+//                        temp.addProperty("count","0");
+//                        categoriesfrom_api.add(new Category(temp,getContext()));
 
                         JsonObject temp1 = new JsonObject();
                         temp1.addProperty("id","9");
@@ -224,18 +224,20 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
-                if(i==6){
+                if(i==6) {
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("category_obj",categoriesfrom_api.get(i));
+                    bundle.putSerializable("category_obj", categoriesfrom_api.get(i));
                     myFavoritesFragment.setArguments(bundle);
-                    getFragmentManager().beginTransaction().replace(R.id.container,myFavoritesFragment).addToBackStack("category").commit();
+                    getFragmentManager().beginTransaction().replace(R.id.container, myFavoritesFragment).addToBackStack("category").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-                }else if (i==7){
-                    CartFragment cartFragment = new CartFragment();
-                    getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
-                }else if (i==8) {
+                }
+//                }else if (i==7){
+//                    CartFragment cartFragment = new CartFragment();
+//                    getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
+//                    mDrawerLayout.closeDrawer(GravityCompat.START);
+//                }
+               else if (i==8) {
                     AboutUsFragment aboutUsFragment = new AboutUsFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container, aboutUsFragment).addToBackStack("about").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);
