@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="45dp">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -17,13 +17,14 @@
             android:layout_height="50dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/back_btn"
                 android:adjustViewBounds="true"
-                android:layout_marginLeft="3dp"
-                android:layout_marginTop="14dp"
-                android:src="@drawable/back_arrow" />
+                android:src="@drawable/back_arrow"
+                android:tint="#f2ea2f"
+                android:padding="10dp"
+                android:layout_gravity="center_vertical" />
 
             <TextView
                 android:text="RecipesPLus"
@@ -33,9 +34,8 @@
                 android:layout_marginLeft="5dp"
                 android:gravity="center_vertical"
                 android:textSize="17sp"
-                android:textColor="#ffa500"
-                android:textStyle="normal|bold"
-                android:layout_marginTop="3dp" />
+                android:textColor="#f2ea2f"
+                android:textStyle="normal|bold" />
 
             <TextView
                 android:text="Fruit recipes"
@@ -45,16 +45,16 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textSize="17sp"
-                android:layout_marginLeft="10dp"
                 android:textColor="#808080"
                 android:textStyle="normal|bold"
-                android:layout_marginTop="3dp" />
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="5dp"
+                android:paddingLeft="10dp" />
         </LinearLayout>
     </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
         android:id="@+id/products_list" />
 </LinearLayout>

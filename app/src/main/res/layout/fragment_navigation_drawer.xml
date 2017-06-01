@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:choiceMode="singleChoice"
     android:divider="@android:color/transparent"
-    android:dividerHeight="5dp"
+    android:dividerHeight="2dp"
     tools:context="com.viralandroid.receipe.NavigationDrawerFragment"
     android:background="#64424242"
     android:layout_marginTop="50dp" />

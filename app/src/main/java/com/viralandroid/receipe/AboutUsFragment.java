@@ -23,21 +23,18 @@ import java.util.ArrayList;
 public class AboutUsFragment extends Fragment {
     ImageView back_btn;
     ArrayList<Settings> settingsfrom_api;
-    TextView about,email,contact;
+    TextView about;
     @Override
     public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         final View view = inflater.inflate(R.layout.about_us,container,false);
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
         about = (TextView) view.findViewById(R.id.about);
-        email = (TextView) view.findViewById(R.id.email);
-        contact = (TextView) view.findViewById(R.id.contact);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getActivity().onBackPressed();
             }
         });
-
         settingsfrom_api = new ArrayList<>();
         get_aboutus();
         return view;
@@ -60,8 +57,6 @@ public class AboutUsFragment extends Fragment {
                             Log.e("about_response",result.toString());
                             Log.e("about",result.get("about").toString());
                             about.setText(android.text.Html.fromHtml(result.get("about").getAsString()));
-                            email.setText(result.get("email").getAsString());
-                            contact.setText(android.text.Html.fromHtml(result.get("contact").getAsString()));
                         } catch(Exception ex){
                             ex.printStackTrace();
                         }

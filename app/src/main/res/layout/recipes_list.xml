@@ -20,7 +20,8 @@
             android:id="@+id/description"
             android:textSize="17sp"
             android:textColor="#000"
-            android:maxLines="6" />
+            android:maxLines="6"
+            android:paddingLeft="10dp" />
     </LinearLayout>
 
 </LinearLayout>

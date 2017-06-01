@@ -201,16 +201,31 @@ public class RecipeMainFragment extends Fragment {
 
         switch (pos){
             case  1:
-                recipe_image.setImageResource(R.drawable.tab_bar_ingredients2x3);
+                recipe_image.setImageResource(R.drawable.ingredients2x3);
+                recipes.setBackgroundColor(Color.parseColor("#f2ea2f"));
                 recipe_title.setTextColor(Color.parseColor("#ffa500"));
+                ingrediants.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                methods.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                ingrediiants_image.setImageResource(R.drawable.tab_bar_ingredients2x1);
+                methods_image.setImageResource(R.drawable.tab_bar_recipe);
                 break;
             case  2:
-                ingrediiants_image.setImageResource(R.drawable.tab_bar_ingredients_active);
+                recipe_image.setImageResource(R.drawable.tab_bar_summary2);
+                methods_image.setImageResource(R.drawable.tab_bar_recipe);
+                ingrediiants_image.setImageResource(R.drawable.ingredients_active);
+                ingrediants.setBackgroundColor(Color.parseColor("#f2ea2f"));
                 ingrediants_title.setTextColor(Color.parseColor("#ffa500"));
+                recipes.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                methods.setBackgroundColor(Color.parseColor("#d3d3d3"));
                 break;
             case  3:
-                methods_image.setImageResource(R.drawable.tab_bar_ingredients2x);
+                ingrediiants_image.setImageResource(R.drawable.tab_bar_ingredients2x1);
+                recipe_image.setImageResource(R.drawable.tab_bar_summary2);
+                methods_image.setImageResource(R.drawable.ingredients2x);
+                methods.setBackgroundColor(Color.parseColor("#f2ea2f"));
                 methods_title.setTextColor(Color.parseColor("#ffa500"));
+                ingrediants.setBackgroundColor(Color.parseColor("#d3d3d3"));
+                recipes.setBackgroundColor(Color.parseColor("#d3d3d3"));
                 break;
         }
 

@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="48dp">
+        android:layout_height="45dp">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -17,13 +17,15 @@
             android:layout_marginRight="5dp">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:id="@+id/back_btn"
-                android:paddingTop="5dp"
-                android:layout_marginLeft="5dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/back_arrow" />
+                android:src="@drawable/back_arrow"
+                android:tint="#f2ea2f"
+                android:padding="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="2dp" />
 
             <TextView
                 android:text="RecipesPLus"
@@ -32,7 +34,7 @@
                 android:id="@+id/textView9"
                 android:gravity="center_vertical"
                 android:textSize="18sp"
-                android:textColor="#ffa500"
+                android:textColor="#f2ea2f"
                 android:layout_marginLeft="6dp"
                 android:layout_weight="1"
                 android:layout_marginTop="4dp"
@@ -45,8 +47,9 @@
                 android:id="@+id/clear_list"
                 android:gravity="center_vertical|center_horizontal"
                 android:textSize="16sp"
-                android:textColor="#ffa500"
-                android:textStyle="normal|bold" />
+                android:textColor="#f2ea2f"
+                android:textStyle="normal|bold"
+                android:layout_marginRight="5dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -54,7 +57,6 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:background="#b2b2b2"></LinearLayout>
 
