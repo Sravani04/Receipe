@@ -20,6 +20,7 @@
         <activity android:name=".CartFragment"></activity>
         <activity android:name=".ExampleMainActivity"></activity>
         <activity android:name=".YoutubePlayer"></activity>
+        <activity android:name=".LanguageScreen"></activity>
     </application>
 
 </manifest>
