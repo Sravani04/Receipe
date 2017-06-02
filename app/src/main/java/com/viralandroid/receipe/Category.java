@@ -18,5 +18,9 @@ public class Category implements Serializable {
         title_ar = jsonObject.get("title_ar").getAsString();
         image = jsonObject.get("image").getAsString();
         count = jsonObject.get("count").getAsString();
+        if (Session.GetLang(context).equals("ar")) {
+            title = title_ar;
+        }
+
     }
 }

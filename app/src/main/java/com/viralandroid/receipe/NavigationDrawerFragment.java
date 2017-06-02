@@ -182,8 +182,8 @@ public class NavigationDrawerFragment extends Fragment {
 
                         JsonObject jsonObj = new JsonObject();
                         jsonObj.addProperty("id","8");
-                        jsonObj.addProperty("title","My Favorites");
-                        jsonObj.addProperty("title_ar","My Favorites");
+                        jsonObj.addProperty("title",Session.GetWord(getContext(),"My Favorites"));
+                        jsonObj.addProperty("title_ar",Session.GetWord(getContext(),"My Favorites"));
                         jsonObj.addProperty("image","http://mamacgroup.com/recipies/uploads/category/101489559793.png");
                         jsonObj.addProperty("count","0");
                         categoriesfrom_api.add(new Category(jsonObj,getContext()));
@@ -198,8 +198,8 @@ public class NavigationDrawerFragment extends Fragment {
 
                         JsonObject temp1 = new JsonObject();
                         temp1.addProperty("id","9");
-                        temp1.addProperty("title","About Us");
-                        temp1.addProperty("title_ar","About Us");
+                        temp1.addProperty("title",Session.GetWord(getContext(),"About Us"));
+                        temp1.addProperty("title_ar",Session.GetWord(getContext(),"About Us"));
                         temp1.addProperty("image","http://mamacgroup.com/recipies/uploads/category/91489559668.png");
                         temp1.addProperty("count","0");
                         categoriesfrom_api.add(new Category(temp1,getContext()));
@@ -224,7 +224,7 @@ public class NavigationDrawerFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedposition[0] = i;
                 mMyDrawerAdapter.notifyDataSetChanged();
-                if(i==8) {
+                if(i==categoriesfrom_api.size()-2) {
                     MyFavoritesFragment myFavoritesFragment = new MyFavoritesFragment();
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("category_obj", categoriesfrom_api.get(i));
@@ -237,7 +237,7 @@ public class NavigationDrawerFragment extends Fragment {
 //                    getFragmentManager().beginTransaction().replace(R.id.container,cartFragment).addToBackStack("cart").commit();
 //                    mDrawerLayout.closeDrawer(GravityCompat.START);
 //                }
-               else if (i==9) {
+               else if (i==categoriesfrom_api.size()-1) {
                     AboutUsFragment aboutUsFragment = new AboutUsFragment();
                     getFragmentManager().beginTransaction().replace(R.id.container, aboutUsFragment).addToBackStack("about").commit();
                     mDrawerLayout.closeDrawer(GravityCompat.START);

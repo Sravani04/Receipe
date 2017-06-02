@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.JsonArray;
 import com.koushikdutta.async.future.FutureCallback;
@@ -91,6 +92,9 @@ NavigationDrawerCallbacks mCallbacks;
                 false);
         listView = (ListView) rootView.findViewById(R.id.categories_list);
         menu_btn = (ImageView) rootView.findViewById(R.id.menu_btn);
+        TextView category = (TextView) rootView.findViewById(R.id.category);
+
+        category.setText(Session.GetWord(getActivity(),"Categories"));
 
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +102,7 @@ NavigationDrawerCallbacks mCallbacks;
                     mCallbacks.menu_clicked();
             }
         });
+
 
         images = new ArrayList<>();
         numbers = new ArrayList<>();

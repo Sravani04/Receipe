@@ -71,6 +71,10 @@ public class RecipeMainFragment extends Fragment {
             e.printStackTrace();
         }
 
+        recipe_title.setText(Session.GetWord(getContext(),"Recipes"));
+        ingrediants_title.setText(Session.GetWord(getContext(),"Ingredients"));
+        methods_title.setText(Session.GetWord(getContext(),"Method"));
+
 
         recipe_gluten.setText(products_obj.price);
         recipe_ct.setText(products_obj.time1);

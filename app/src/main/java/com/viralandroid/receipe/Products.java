@@ -32,6 +32,11 @@ public class Products  implements Serializable{
         description_ar = jsonObject.get("description_ar").getAsString();
         script = jsonObject.get("script").getAsString();
 
+        if (Session.GetLang(context).equals("ar")){
+            title = title_ar;
+            description = description_ar;
+        }
+
         images = new ArrayList<>();
         for(int i=0;i<jsonObject.get("images").getAsJsonArray().size();i++){
 
@@ -75,6 +80,10 @@ public class Products  implements Serializable{
             ingredient_ar = jsonObject.get("ingredient_ar").getAsString();
             value = jsonObject.get("value").getAsString();
             value_ar = jsonObject.get("value_ar").getAsString();
+            if (Session.GetLang(context).equals("ar")){
+                ingredient = ingredient_ar;
+                value = value_ar;
+            }
         }
     }
 
@@ -88,6 +97,10 @@ public class Products  implements Serializable{
             method_ar = jsonObject.get("method_ar").getAsString();
             value = jsonObject.get("value").getAsString();
             value_ar = jsonObject.get("value_ar").getAsString();
+            if (Session.GetLang(context).equals("ar")){
+                method = method_ar;
+                value = value_ar;
+            }
         }
     }
 
