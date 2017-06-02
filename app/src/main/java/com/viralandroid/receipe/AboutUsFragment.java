@@ -23,11 +23,13 @@ import java.util.ArrayList;
 public class AboutUsFragment extends Fragment {
     ImageView back_btn;
     ArrayList<Settings> settingsfrom_api;
-    TextView about;
+    TextView about,about_title;
     @Override
     public View  onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         final View view = inflater.inflate(R.layout.about_us,container,false);
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
+        about_title = (TextView) view.findViewById(R.id.about_title);
+        about_title.setText(Session.GetWord(getContext(),"About Us"));
         about = (TextView) view.findViewById(R.id.about);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override

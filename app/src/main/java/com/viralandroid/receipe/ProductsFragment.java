@@ -32,7 +32,7 @@ public class ProductsFragment extends Fragment {
     ArrayList<String> titles;
     ArrayList<String> time;
     ImageView back_btn;
-    TextView category_name;
+    TextView category_name,cat_heading;
     JSONArray jsonArray;
     JSONObject jsonObject;
     ArrayList<Recipes> recipes;
@@ -48,6 +48,9 @@ public class ProductsFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.products_list);
         back_btn = (ImageView) view.findViewById(R.id.back_btn);
         category_name = (TextView) view.findViewById(R.id.category_name);
+        cat_heading = (TextView) view.findViewById(R.id.cat_heading);
+
+        cat_heading.setText(Session.GetWord(getContext(),"Categories"));
 
 //        try {
 //            jsonArray = new JSONArray(getArguments().getString("recipe"));
@@ -129,7 +132,7 @@ public class ProductsFragment extends Fragment {
         progressDialog.setCancelable(false);
         progressDialog.show();
         Ion.with(getContext())
-                .load("http://mamacgroup.com/recipies/api/recipies.php")
+                .load(Session.SERVER_URL+"recipies.php")
                 .setBodyParameter("category", category.id)
                 .asJsonArray()
                 .setCallback(new FutureCallback<JsonArray>() {
