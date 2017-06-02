@@ -7,7 +7,7 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:background="#f2ea2f">
 
         <LinearLayout
@@ -40,7 +40,7 @@
 
             <TextView
                 android:text="Fruit recipes"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/category_name"
                 android:layout_weight="1"
