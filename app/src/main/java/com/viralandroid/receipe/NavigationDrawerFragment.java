@@ -181,7 +181,7 @@ public class NavigationDrawerFragment extends Fragment {
 
 
                         JsonObject jsonObj = new JsonObject();
-                        jsonObj.addProperty("id","8");
+                        jsonObj.addProperty("id",categoriesfrom_api.size()-2);
                         jsonObj.addProperty("title",Session.GetWord(getContext(),"My Favorites"));
                         jsonObj.addProperty("title_ar",Session.GetWord(getContext(),"My Favorites"));
                         jsonObj.addProperty("image","http://mamacgroup.com/recipies/uploads/category/101489559793.png");
@@ -190,6 +190,7 @@ public class NavigationDrawerFragment extends Fragment {
 
 //                        JsonObject temp = new JsonObject();
 //                        temp.addProperty("id","8");
+                        //8,9
 //                        temp.addProperty("title","Shopping List");
 //                        temp.addProperty("title_ar","Shopping List");
 //                        temp.addProperty("image","http://mamacgroup.com/recipies/uploads/category/81489559514.png");
@@ -197,7 +198,7 @@ public class NavigationDrawerFragment extends Fragment {
 //                        categoriesfrom_api.add(new Category(temp,getContext()));
 
                         JsonObject temp1 = new JsonObject();
-                        temp1.addProperty("id","9");
+                        temp1.addProperty("id",categoriesfrom_api.size()-1);
                         temp1.addProperty("title",Session.GetWord(getContext(),"About Us"));
                         temp1.addProperty("title_ar",Session.GetWord(getContext(),"About Us"));
                         temp1.addProperty("image","http://mamacgroup.com/recipies/uploads/category/91489559668.png");
