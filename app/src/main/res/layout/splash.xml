@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:id="@+id/imageView"
             android:scaleType="centerCrop"
-            android:src="@drawable/crave"
-            android:adjustViewBounds="true" />
+            android:adjustViewBounds="true"
+            android:src="@drawable/shukah" />
     </LinearLayout>
 </LinearLayout>
