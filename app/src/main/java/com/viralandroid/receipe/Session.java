@@ -12,7 +12,7 @@ import org.json.JSONObject;
  */
 
 public class Session {
-    public static String SERVER_URL = "https://shukah.net/api/";
+    public static String SERVER_URL = "http://halachef.com/api/";
 
     public  static  final String lang="lan";
     public  static  final String Words_en="en";
