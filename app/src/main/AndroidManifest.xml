@@ -8,19 +8,19 @@
         android:icon="@mipmap/hala_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ProductsActivity"></activity>
-        <activity android:name=".RecipeFragment"></activity>
-        <activity android:name=".CartFragment"></activity>
-        <activity android:name=".ExampleMainActivity"></activity>
-        <activity android:name=".YoutubePlayer"></activity>
-        <activity android:name=".LanguageScreen"></activity>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ProductsActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".RecipeFragment" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CartFragment" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ExampleMainActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".YoutubePlayer" android:screenOrientation="portrait"></activity>
+        <activity android:name=".LanguageScreen" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
